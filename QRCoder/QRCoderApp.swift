@@ -9,9 +9,18 @@ import SwiftUI
 
 @main
 struct QRCoderApp: App {
+    
+    @StateObject private var myData = QRData()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            QRListView(myData: myData) {
+                // this gets called in the ContentView saveAction closure.
+                myData.save()
+            }
+            .onAppear() {
+                myData.load()
+            }
         }
+        
     }
 }
