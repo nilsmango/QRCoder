@@ -18,6 +18,8 @@
 		78EEFE8927076606008B2DA3 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEFE8827076606008B2DA3 /* ButtonView.swift */; };
 		78EEFE8C2707A327008B2DA3 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEFE8B2707A327008B2DA3 /* QRCodeView.swift */; };
 		78EEFE8E2707A3EA008B2DA3 /* QRGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEFE8D2707A3EA008B2DA3 /* QRGenerator.swift */; };
+		78F2007B2708B09200C5CECF /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F2007A2708B09200C5CECF /* ShareSheet.swift */; };
+		78F2007D2708B18300C5CECF /* Extention+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F2007C2708B18300C5CECF /* Extention+View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		78EEFE8827076606008B2DA3 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		78EEFE8B2707A327008B2DA3 /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
 		78EEFE8D2707A3EA008B2DA3 /* QRGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRGenerator.swift; sourceTree = "<group>"; };
+		78F2007A2708B09200C5CECF /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		78F2007C2708B18300C5CECF /* Extention+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extention+View.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +103,9 @@
 			isa = PBXGroup;
 			children = (
 				78EEFE8827076606008B2DA3 /* ButtonView.swift */,
+				78F2007C2708B18300C5CECF /* Extention+View.swift */,
 				78EEFE8D2707A3EA008B2DA3 /* QRGenerator.swift */,
+				78F2007A2708B09200C5CECF /* ShareSheet.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -175,6 +181,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				78EEFE85270714F3008B2DA3 /* DetailView.swift in Sources */,
+				78F2007B2708B09200C5CECF /* ShareSheet.swift in Sources */,
+				78F2007D2708B18300C5CECF /* Extention+View.swift in Sources */,
 				78EEFE7D2706509D008B2DA3 /* QRData.swift in Sources */,
 				78EEFE8727075D71008B2DA3 /* EditView.swift in Sources */,
 				78EEFE83270710FD008B2DA3 /* QRListView.swift in Sources */,
@@ -316,6 +324,7 @@
 				DEVELOPMENT_TEAM = XDR8Y54N77;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This is needed in order to save your QR Codes in Photos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -346,6 +355,7 @@
 				DEVELOPMENT_TEAM = XDR8Y54N77;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This is needed in order to save your QR Codes in Photos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

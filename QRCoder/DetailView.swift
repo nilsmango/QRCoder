@@ -15,7 +15,16 @@ struct DetailView: View {
     
     @State private var data: QRCode.Data = QRCode.Data()
     @State private var editViewIsPresented = false
-
+    @State private var shareSheetPresented = false
+    @State private var items: [Any] = []
+    
+    var qrView: some View {
+        QRCodeView(qrString: qrData.title)
+            .padding(.bottom, 40)
+            .padding(.horizontal, 15)
+            .frame(width: 1000, height: 1000, alignment: .center)
+    }
+    
     
     var body: some View {
         VStack {
@@ -31,6 +40,16 @@ struct DetailView: View {
             }
             .padding(10)
             
+            ButtonView {
+                let qrImage = qrView.snapshot()
+                items.removeAll()
+                items.append(qrImage)
+                shareSheetPresented = true
+            } content: {
+                Label("Share", systemImage: "square.and.arrow.up")
+            }
+
+            
             
             ButtonView {
                 guard let index = myData.codes.firstIndex(where: { $0.id == qrData.id }) else {
@@ -39,6 +58,7 @@ struct DetailView: View {
                 myData.codes.remove(at: index)
             } content: {
                 Label("Delete", systemImage: "trash")
+//                    .foregroundColor(.red)
             }
             .padding(10)
             
@@ -62,6 +82,9 @@ struct DetailView: View {
                     })
             }
         }
+        .sheet(isPresented: $shareSheetPresented, content: {
+            ShareSheet(items: items)
+        })
         
         
     }
