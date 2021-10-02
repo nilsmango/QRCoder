@@ -19,7 +19,7 @@ struct DetailView: View {
     @State private var items: [Any] = []
     
     var qrView: some View {
-        QRCodeView(qrString: qrData.title)
+        QRCodeView(qrString: qrData.qrString)
             .padding(.bottom, 40)
             .padding(.horizontal, 15)
             .frame(width: 1000, height: 1000, alignment: .center)
@@ -28,7 +28,7 @@ struct DetailView: View {
     
     var body: some View {
         VStack {
-            QRCodeView(qrString: qrData.title)
+            QRCodeView(qrString: qrData.qrString)
                 .padding(10)
             Spacer()
             
@@ -94,7 +94,7 @@ struct DetailView: View {
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            DetailView(myData: QRData(), qrData: QRCode.sample[0])
+            DetailView(myData: QRData(), qrData: QRCode.sampleData[0])
         }
         
     }

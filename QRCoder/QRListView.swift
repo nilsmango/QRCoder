@@ -33,7 +33,7 @@ struct QRListView: View {
                         ForEach(myData.codes) { qrData in
                             NavigationLink(destination: DetailView(myData: myData, qrData: qrData)) {
                                 VStack {
-                                    QRCodeView(qrString: qrData.title)
+                                    QRCodeView(qrString: qrData.qrString)
                                     Text(qrData.title)
                                         .font(.headline)
                                 }
@@ -70,10 +70,24 @@ struct QRListView: View {
                             Text("Dismiss")
                         }), trailing: Button(action: {
                             isPresented = false
-                            let newCode = QRCode(title: newCodeData.title)
+                            let newCode = QRCode(title: newCodeData.title, qrCodeType: newCodeData.qrCodeType, complexContact: newCodeData.complexContact,  hiddenNetwork: newCodeData.hiddenNetwork, text: newCodeData.text, firstName: newCodeData.firstName, lastName: newCodeData.lastName, email: newCodeData.email, phoneNumber: newCodeData.phoneNumber, workNumber: newCodeData.workNumber, address: newCodeData.address, url: newCodeData.url, network: newCodeData.network, password: newCodeData.password, encryptionType: newCodeData.encryptionType)
                             myData.codes.append(newCode)
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                 newCodeData.title = ""
+                                newCodeData.qrCodeType = "Text"
+                                newCodeData.complexContact = false
+                                newCodeData.hiddenNetwork = false
+                                newCodeData.text = ""
+                                newCodeData.firstName = ""
+                                newCodeData.lastName = ""
+                                newCodeData.email = ""
+                                newCodeData.phoneNumber = ""
+                                newCodeData.workNumber = ""
+                                newCodeData.address = ""
+                                newCodeData.url = "http://"
+                                newCodeData.network = ""
+                                newCodeData.password = ""
+                                newCodeData.encryptionType = "WPA/WPA2"
                             }
                         }, label: {
                             Text("Save")

@@ -41,7 +41,7 @@ class QRData: ObservableObject {
                 //                if DEBUG to ensure that you have sample scrums to work with while you develop the app. Code inside the block is excluded from releases.
                 #if DEBUG
                 DispatchQueue.main.async {
-                    self?.codes = QRCode.sample
+                    self?.codes = QRCode.sampleData
                 }
                 #endif
                 
