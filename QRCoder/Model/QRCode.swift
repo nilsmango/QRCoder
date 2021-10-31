@@ -128,12 +128,13 @@ struct QRCode: Identifiable, Codable {
         self.encryptionType = encryptionType
         self.id = id
     }
+
 }
 
 extension QRCode {
     static var sampleData: [QRCode] {
         [
-            QRCode(title: "Stupid Text", qrCodeType: "Text", complexContact: false, hiddenNetwork: false, text: "Honk if you are horny!", firstName: "", lastName: "", email: "", phoneNumber: "", workNumber: "", address: "", url: "", network: "", password: "", encryptionType: "None"),
+            QRCode(title: "Your QR Code", qrCodeType: "Text", complexContact: false, hiddenNetwork: false, text: "This is your QR Code", firstName: "", lastName: "", email: "", phoneNumber: "", workNumber: "", address: "", url: "", network: "", password: "", encryptionType: "None"),
             QRCode(title: "My Simple Contact", qrCodeType: "Contact", complexContact: false, hiddenNetwork: false, text: "", firstName: "Maxi", lastName: "Mustermann", email: "max@muster.com", phoneNumber: "07777777", workNumber: "", address: "", url: "", network: "", password: "", encryptionType: "None"),
             QRCode(title: "My Complex Contact", qrCodeType: "Contact", complexContact: true, hiddenNetwork: false, text: "", firstName: "Miri", lastName: "Muster", email: "miri@muster.ch", phoneNumber: "0238283291", workNumber: "0382822991", address: "Im Musterwald 12, 4058 Basel", url: "http://musterfrau.ch", network: "", password: "", encryptionType: "None"),
             QRCode(title: "My Email", qrCodeType: "Email", complexContact: false, hiddenNetwork: false, text: "", firstName: "", lastName: "", email: "meine@email.com", phoneNumber: "", workNumber: "", address: "", url: "", network: "", password: "", encryptionType: "None")

@@ -35,7 +35,7 @@ struct QRListView: View {
                                 VStack {
                                     QRCodeView(qrString: qrData.qrString)
                                     Text(qrData.title)
-                                        .font(.headline)
+                                        .font(.subheadline)
                                 }
                                 
                             }
@@ -104,7 +104,9 @@ struct QRListView: View {
 struct QRListView_Previews: PreviewProvider {
     static var previews: some View {
         QRListView(myData: QRData(), saveAction: {})
-//                    .preferredColorScheme(.dark)
+
+        QRListView(myData: QRData(), saveAction: {})
+                    .preferredColorScheme(.dark)
     }
     
     

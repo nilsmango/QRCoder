@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreImage.CIFilterBuiltins
+//import WidgetKit
 
 
 func generateQRCode(from string: String) -> UIImage {
@@ -24,4 +25,10 @@ func generateQRCode(from string: String) -> UIImage {
     return UIImage(systemName: "xmark.circle") ?? UIImage()
 }
 
-
+func codeFromString(name: String?) -> QRCode? {
+    
+    return QRData().codes.first(where: { (singleCode) -> Bool in
+        return singleCode.qrString == name
+    })
+    
+}

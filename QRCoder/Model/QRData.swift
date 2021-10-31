@@ -26,7 +26,6 @@ class QRData: ObservableObject {
     
     @Published var codes: [QRCode] = []
     
-    
     func delete(at indexSet: IndexSet) {
         codes.remove(atOffsets: indexSet)
     }
@@ -38,12 +37,12 @@ class QRData: ObservableObject {
     func load() {
         DispatchQueue.global(qos: .background).async { [weak self] in
             guard let data = try? Data(contentsOf: Self.fileURL) else {
-                //                if DEBUG to ensure that you have sample scrums to work with while you develop the app. Code inside the block is excluded from releases.
-                #if DEBUG
-                DispatchQueue.main.async {
-                    self?.codes = QRCode.sampleData
-                }
-                #endif
+//                if DEBUG to ensure that you have sample QR Codes to work with while you develop the app. Code inside the block is excluded from releases.
+//                #if DEBUG
+//                DispatchQueue.main.async {
+//                    self?.codes = QRCode.sampleData
+//                }
+//                #endif
                 
                 return
             }
@@ -71,6 +70,8 @@ class QRData: ObservableObject {
         }
     }
 }
+
+
 
 
 

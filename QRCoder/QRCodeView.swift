@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct QRCodeView: View {
-    
     var qrString: String
     
     var body: some View {
@@ -16,11 +15,14 @@ struct QRCodeView: View {
                 .interpolation(.none)
                 .resizable()
                 .scaledToFit()
+                .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
+
     }
 }
 
 struct QRCodeView_Previews: PreviewProvider {
     static var previews: some View {
         QRCodeView(qrString: "Some Text")
+            .preferredColorScheme(.dark)
     }
 }

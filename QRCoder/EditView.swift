@@ -121,6 +121,7 @@ struct EditView: View {
                 .interpolation(.none)
                 .resizable()
                 .scaledToFit()
+                .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
                 .padding()
             List {
                 Section() {
@@ -143,15 +144,17 @@ struct EditView: View {
                         }
                     } else if codeData.qrCodeType == "URL" {
                         Section(header: Text("\(codeData.qrCodeType)")) {
-                            TextField("Your URL...", text: $codeData.url)
+                            TextField("URL", text: $codeData.url)
                                 .disableAutocorrection(true)
                                 .autocapitalization(.none)
+                                .keyboardType(.URL)
                         }
                     } else if codeData.qrCodeType == "Email" {
                         Section(header: Text("\(codeData.qrCodeType)")) {
-                            TextField("nils@7III.ch", text: $codeData.email)
+                            TextField("someone@example.com", text: $codeData.email)
                                 .disableAutocorrection(true)
                                 .autocapitalization(.none)
+                                .keyboardType(.emailAddress)
                         }
                     } else if codeData.qrCodeType == "Wi-Fi Access" {
                         Section(header: Text("\(codeData.qrCodeType)")) {
@@ -169,7 +172,7 @@ struct EditView: View {
                                 TextField("Password", text: $codeData.password)
                                     .autocapitalization(.none)
                                     .disableAutocorrection(true)
-                                Toggle("Hidden network", isOn: $codeData.hiddenNetwork)
+                                Toggle("Hidden Network", isOn: $codeData.hiddenNetwork)
                             }
                         }
                     } else if codeData.qrCodeType == "Contact" {
@@ -180,13 +183,16 @@ struct EditView: View {
                             TextField("Last Name", text: $codeData.lastName)
                                 .disableAutocorrection(true)
                             TextField("Phone Number", text: $codeData.phoneNumber)
+                                .keyboardType(.phonePad)
                             
                             if codeData.complexContact {
                                 TextField("Work Phone Number", text: $codeData.workNumber)
+                                    .keyboardType(.phonePad)
                             }
                             TextField("Email", text: $codeData.email)
                                 .autocapitalization(.none)
                                 .disableAutocorrection(true)
+                                .keyboardType(.emailAddress)
                             
                             if codeData.complexContact {
                                 TextField("Address", text: $codeData.address)
@@ -195,6 +201,8 @@ struct EditView: View {
                                 TextField("URL", text: $codeData.url)
                                     .autocapitalization(.none)
                                     .disableAutocorrection(true)
+                                    .keyboardType(.URL)
+                                
                             }
                         }
                     } else {
@@ -212,5 +220,6 @@ struct EditView: View {
 struct EditView_Previews: PreviewProvider {
     static var previews: some View {
         EditView(codeData: .constant(QRCode.sampleData[0].data))
+            .preferredColorScheme(.dark)
     }
 }

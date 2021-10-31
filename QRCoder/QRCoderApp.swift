@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+//import WidgetKit
 
 @main
 struct QRCoderApp: App {
@@ -16,6 +17,7 @@ struct QRCoderApp: App {
             QRListView(myData: myData) {
                 // this gets called in the ContentView saveAction closure.
                 myData.save()
+//                WidgetCenter.shared.reloadAllTimelines()
             }
             .onAppear() {
                 myData.load()

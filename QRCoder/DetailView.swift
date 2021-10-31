@@ -23,6 +23,8 @@ struct DetailView: View {
             .padding(.bottom, 40)
             .padding(.horizontal, 15)
             .frame(width: 1000, height: 1000, alignment: .center)
+            
+
     }
     
     
