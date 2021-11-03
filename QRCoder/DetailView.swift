@@ -57,6 +57,7 @@ struct DetailView: View {
                 guard let index = myData.codes.firstIndex(where: { $0.id == qrData.id }) else {
                     fatalError("couldn't find the index for data")
                 }
+
                 myData.codes.remove(at: index)
             } content: {
                 Label("Delete", systemImage: "trash")

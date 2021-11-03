@@ -37,7 +37,7 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>Show Title</string>
+					<string>Show QR Code Name</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>kw7NDV</string>
 					<key>INIntentParameterDisplayPriority</key>

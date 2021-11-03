@@ -107,9 +107,9 @@ struct QRCode: Identifiable, Codable {
         
     }
 
-    let id: UUID
+    let id: String
     
-    init(title: String, qrCodeType: String, complexContact: Bool, hiddenNetwork: Bool, text: String ,firstName: String, lastName: String, email: String, phoneNumber: String, workNumber: String, address: String, url: String, network: String, password: String, encryptionType: String, id: UUID = UUID()) {
+    init(title: String, qrCodeType: String, complexContact: Bool, hiddenNetwork: Bool, text: String ,firstName: String, lastName: String, email: String, phoneNumber: String, workNumber: String, address: String, url: String, network: String, password: String, encryptionType: String, id: String = UUID().uuidString) {
         
         self.title = title
         self.qrCodeType = qrCodeType

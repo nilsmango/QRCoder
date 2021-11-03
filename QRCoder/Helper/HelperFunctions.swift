@@ -25,10 +25,10 @@ func generateQRCode(from string: String) -> UIImage {
     return UIImage(systemName: "xmark.circle") ?? UIImage()
 }
 
-func codeFromString(name: String?) -> QRCode? {
+func codeFromString(name: String?, data: [QRCode]) -> QRCode? {
     
-    return QRData().codes.first(where: { (singleCode) -> Bool in
-        return singleCode.qrString == name
+    return data.first(where: { (singleCode) -> Bool in
+        return singleCode.id == name
     })
     
 }

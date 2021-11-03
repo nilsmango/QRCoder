@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		786B5024272AFACE0001CEDA /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEFE7927064D63008B2DA3 /* QRCode.swift */; };
 		786B5025272AFE230001CEDA /* QRCoderWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 78FD9004272ACC070094DA3A /* QRCoderWidget.intentdefinition */; };
-		78E28F84270EEDD80064D546 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 78E28F83270EEDD80064D546 /* Intents.intentdefinition */; };
 		78EEFE6C27064D47008B2DA3 /* QRCoderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEFE6B27064D47008B2DA3 /* QRCoderApp.swift */; };
 		78EEFE7027064D48008B2DA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78EEFE6F27064D48008B2DA3 /* Assets.xcassets */; };
 		78EEFE7327064D48008B2DA3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78EEFE7227064D48008B2DA3 /* Preview Assets.xcassets */; };
@@ -73,7 +72,9 @@
 /* Begin PBXFileReference section */
 		788005DF270D9CF400FFB113 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		788005E1270D9CF400FFB113 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		78E28F83270EEDD80064D546 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
+		78CBA5242731C3EF00710496 /* QRCoder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QRCoder.entitlements; sourceTree = "<group>"; };
+		78CBA5252731C46A00710496 /* QRCoderWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QRCoderWidgetExtension.entitlements; sourceTree = "<group>"; };
+		78CBA5262731C47600710496 /* QRCoderWidgetIntentHandler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QRCoderWidgetIntentHandler.entitlements; sourceTree = "<group>"; };
 		78E28F85270EEE000064D546 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		78E28F8B270EF3920064D546 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		78E28F96270EF3920064D546 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
@@ -143,7 +144,6 @@
 		78EEFE5F27064D47008B2DA3 = {
 			isa = PBXGroup;
 			children = (
-				78E28F83270EEDD80064D546 /* Intents.intentdefinition */,
 				78EEFE6A27064D47008B2DA3 /* QRCoder */,
 				78FD9001272ACC070094DA3A /* QRCoderWidget */,
 				78FD9019272AF6740094DA3A /* QRCoderWidgetIntentHandler */,
@@ -165,6 +165,7 @@
 		78EEFE6A27064D47008B2DA3 /* QRCoder */ = {
 			isa = PBXGroup;
 			children = (
+				78CBA5242731C3EF00710496 /* QRCoder.entitlements */,
 				78E28F85270EEE000064D546 /* Info.plist */,
 				78EEFE6B27064D47008B2DA3 /* QRCoderApp.swift */,
 				78EEFE82270710FD008B2DA3 /* QRListView.swift */,
@@ -210,6 +211,7 @@
 		78FD9001272ACC070094DA3A /* QRCoderWidget */ = {
 			isa = PBXGroup;
 			children = (
+				78CBA5252731C46A00710496 /* QRCoderWidgetExtension.entitlements */,
 				78FD9002272ACC070094DA3A /* QRCoderWidget.swift */,
 				78FD9004272ACC070094DA3A /* QRCoderWidget.intentdefinition */,
 				78FD9005272ACC080094DA3A /* Assets.xcassets */,
@@ -221,6 +223,7 @@
 		78FD9019272AF6740094DA3A /* QRCoderWidgetIntentHandler */ = {
 			isa = PBXGroup;
 			children = (
+				78CBA5262731C47600710496 /* QRCoderWidgetIntentHandler.entitlements */,
 				78FD901A272AF6740094DA3A /* IntentHandler.swift */,
 				78FD901C272AF6740094DA3A /* Info.plist */,
 			);
@@ -367,7 +370,6 @@
 				78EEFE6C27064D47008B2DA3 /* QRCoderApp.swift in Sources */,
 				78EEFE8E2707A3EA008B2DA3 /* HelperFunctions.swift in Sources */,
 				78EEFE7A27064D63008B2DA3 /* QRCode.swift in Sources */,
-				78E28F84270EEDD80064D546 /* Intents.intentdefinition in Sources */,
 				78EEFE8927076606008B2DA3 /* ButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,6 +535,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = QRCoder/QRCoder.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"QRCoder/Preview Content\"";
@@ -541,9 +544,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRCoder/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This is needed in order to save your QR Codes in Photos.";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -556,7 +559,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -566,6 +569,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = QRCoder/QRCoder.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"QRCoder/Preview Content\"";
@@ -574,9 +578,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRCoder/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This is needed in order to save your QR Codes in Photos.";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -589,7 +593,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -598,6 +602,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = QRCoderWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XDR8Y54N77;
@@ -616,7 +621,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -625,6 +630,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = QRCoderWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XDR8Y54N77;
@@ -643,13 +649,14 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		78FD9021272AF6740094DA3A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = QRCoderWidgetIntentHandler/QRCoderWidgetIntentHandler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XDR8Y54N77;
@@ -668,13 +675,14 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		78FD9022272AF6740094DA3A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = QRCoderWidgetIntentHandler/QRCoderWidgetIntentHandler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XDR8Y54N77;
@@ -693,7 +701,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

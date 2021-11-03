@@ -15,6 +15,7 @@ struct QRListView: View {
     
     @State private var isPresented = false
     @State private var newCodeData = QRCode.Data()
+    @State private var editMode: EditMode = .inactive
     
     let saveAction: () -> Void
     
@@ -46,6 +47,7 @@ struct QRListView: View {
                         .onMove { indexSet, newPlace in
                             myData.move(from: indexSet, to: newPlace)
                         }
+                        
                     }
                     if myData.codes.isEmpty {
                         VStack {
@@ -60,6 +62,7 @@ struct QRListView: View {
             .toolbar {
                 EditButton()
             }
+            .environment(\.editMode, $editMode)
             .fullScreenCover(isPresented: $isPresented, content: {
                 NavigationView {
                     EditView(codeData: $newCodeData)
