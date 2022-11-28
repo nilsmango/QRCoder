@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EditView: View {
-    @Binding var codeData: QRCode.Data
+    @Binding var codeData: QRCode.Datas
     
     enum QRCodeType: String, CaseIterable, Identifiable {
         case contact = "Contact"
@@ -220,6 +220,6 @@ struct EditView: View {
 struct EditView_Previews: PreviewProvider {
     static var previews: some View {
         EditView(codeData: .constant(QRCode.sampleData[0].data))
-            .preferredColorScheme(.dark)
+            //.preferredColorScheme(.dark)
     }
 }

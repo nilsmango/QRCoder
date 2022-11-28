@@ -14,7 +14,7 @@ struct QRListView: View {
     @Environment(\.scenePhase) private var scenePhase
     
     @State private var isPresented = false
-    @State private var newCodeData = QRCode.Data()
+    @State private var newCodeData = QRCode.Datas()
     @State private var editMode: EditMode = .inactive
     
     let saveAction: () -> Void
@@ -38,7 +38,6 @@ struct QRListView: View {
                                     Text(qrData.title)
                                         .font(.subheadline)
                                 }
-                                
                             }
                         }
                         .onDelete { indexSet in
@@ -73,8 +72,10 @@ struct QRListView: View {
                             Text("Dismiss")
                         }), trailing: Button(action: {
                             isPresented = false
-                            let newCode = QRCode(title: newCodeData.title, qrCodeType: newCodeData.qrCodeType, complexContact: newCodeData.complexContact,  hiddenNetwork: newCodeData.hiddenNetwork, text: newCodeData.text, firstName: newCodeData.firstName, lastName: newCodeData.lastName, email: newCodeData.email, phoneNumber: newCodeData.phoneNumber, workNumber: newCodeData.workNumber, address: newCodeData.address, url: newCodeData.url, network: newCodeData.network, password: newCodeData.password, encryptionType: newCodeData.encryptionType)
+                            let newCode = QRCode(title: newCodeData.title, qrCodeType: newCodeData.qrCodeType, complexContact: newCodeData.complexContact,  hiddenNetwork: newCodeData.hiddenNetwork, text: newCodeData.text, firstName: newCodeData.firstName, lastName: newCodeData.lastName, email: newCodeData.email, phoneNumber: newCodeData.phoneNumber, workNumber: newCodeData.workNumber, address: newCodeData.address, url: newCodeData.url, network: newCodeData.network, password: newCodeData.password, encryptionType: newCodeData.encryptionType, qrImage: generateQRCode(from: stringFromQRData(codeData: newCodeData)).pngData())
+                            
                             myData.codes.append(newCode)
+                            
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                 newCodeData.title = ""
                                 newCodeData.qrCodeType = "Text"

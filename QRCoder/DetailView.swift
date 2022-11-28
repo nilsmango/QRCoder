@@ -13,7 +13,7 @@ struct DetailView: View {
     
     var qrData: QRCode
     
-    @State private var data: QRCode.Data = QRCode.Data()
+    @State private var data: QRCode.Datas = QRCode.Datas()
     @State private var editViewIsPresented = false
     @State private var shareSheetPresented = false
     @State private var items: [Any] = []
@@ -66,6 +66,14 @@ struct DetailView: View {
             .padding(10)
             
             Spacer()
+            
+           // Image(uiImage: UIImage(data: qrData.qrImage!)!)
+            //    .interpolation(.none)
+            //    .resizable()
+           //     .scaledToFit()
+            
+            
+            
             
         }
         

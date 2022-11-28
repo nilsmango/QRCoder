@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import CoreImage.CIFilterBuiltins
+import SwiftUI
 
 struct QRCode: Identifiable, Codable {
     var title: String
@@ -108,8 +110,11 @@ struct QRCode: Identifiable, Codable {
     }
 
     let id: String
+    //we need qrImage as png (jpg might also work) data because apple watch can't work with UIImage generation of the qr code directly.
+    var qrImage: Data?
+
     
-    init(title: String, qrCodeType: String, complexContact: Bool, hiddenNetwork: Bool, text: String ,firstName: String, lastName: String, email: String, phoneNumber: String, workNumber: String, address: String, url: String, network: String, password: String, encryptionType: String, id: String = UUID().uuidString) {
+    init(title: String, qrCodeType: String, complexContact: Bool, hiddenNetwork: Bool, text: String ,firstName: String, lastName: String, email: String, phoneNumber: String, workNumber: String, address: String, url: String, network: String, password: String, encryptionType: String, qrImage: Data?, id: String = UUID().uuidString) {
         
         self.title = title
         self.qrCodeType = qrCodeType
@@ -126,6 +131,7 @@ struct QRCode: Identifiable, Codable {
         self.network = network
         self.password = password
         self.encryptionType = encryptionType
+        self.qrImage = qrImage
         self.id = id
     }
 
@@ -134,16 +140,16 @@ struct QRCode: Identifiable, Codable {
 extension QRCode {
     static var sampleData: [QRCode] {
         [
-            QRCode(title: "Your QR Code", qrCodeType: "Text", complexContact: false, hiddenNetwork: false, text: "This is your QR Code", firstName: "", lastName: "", email: "", phoneNumber: "", workNumber: "", address: "", url: "", network: "", password: "", encryptionType: "None"),
-            QRCode(title: "My Simple Contact", qrCodeType: "Contact", complexContact: false, hiddenNetwork: false, text: "", firstName: "Maxi", lastName: "Mustermann", email: "max@muster.com", phoneNumber: "07777777", workNumber: "", address: "", url: "", network: "", password: "", encryptionType: "None"),
-            QRCode(title: "My Complex Contact", qrCodeType: "Contact", complexContact: true, hiddenNetwork: false, text: "", firstName: "Miri", lastName: "Muster", email: "miri@muster.ch", phoneNumber: "0238283291", workNumber: "0382822991", address: "Im Musterwald 12, 4058 Basel", url: "http://musterfrau.ch", network: "", password: "", encryptionType: "None"),
-            QRCode(title: "My Email", qrCodeType: "Email", complexContact: false, hiddenNetwork: false, text: "", firstName: "", lastName: "", email: "meine@email.com", phoneNumber: "", workNumber: "", address: "", url: "", network: "", password: "", encryptionType: "None")
+            QRCode(title: "Your QR Code", qrCodeType: "Text", complexContact: false, hiddenNetwork: false, text: "This is your QR Code", firstName: "", lastName: "", email: "", phoneNumber: "", workNumber: "", address: "", url: "", network: "", password: "", encryptionType: "None", qrImage: nil),
+            QRCode(title: "My Simple Contact", qrCodeType: "Contact", complexContact: false, hiddenNetwork: false, text: "", firstName: "Maxi", lastName: "Mustermann", email: "max@muster.com", phoneNumber: "07777777", workNumber: "", address: "", url: "", network: "", password: "", encryptionType: "None", qrImage: nil),
+            QRCode(title: "My Complex Contact", qrCodeType: "Contact", complexContact: true, hiddenNetwork: false, text: "", firstName: "Miri", lastName: "Muster", email: "miri@muster.ch", phoneNumber: "0238283291", workNumber: "0382822991", address: "Im Musterwald 12, 4058 Basel", url: "http://musterfrau.ch", network: "", password: "", encryptionType: "None", qrImage: nil),
+            QRCode(title: "My Email", qrCodeType: "Email", complexContact: false, hiddenNetwork: false, text: "", firstName: "", lastName: "", email: "meine@email.com", phoneNumber: "", workNumber: "", address: "", url: "", network: "", password: "", encryptionType: "None", qrImage: nil)
         ]
     }
 }
 
 extension QRCode {
-    struct Data {
+    struct Datas {
         var title: String = ""
         var qrCodeType: String = "Text"
         var complexContact: Bool = false
@@ -159,13 +165,16 @@ extension QRCode {
         var network: String = ""
         var password: String = ""
         var encryptionType: String = "WPA/WPA2"
+        var qrImage: Data? = nil
     }
     
-    var data: Data {
-        return Data(title: title, qrCodeType: qrCodeType, complexContact: complexContact, hiddenNetwork: hiddenNetwork, text: text, firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber, workNumber: workNumber, address: address, url: url, network: network, password: password, encryptionType: encryptionType)
+    var data: Datas {
+        return Datas(title: title, qrCodeType: qrCodeType, complexContact: complexContact, hiddenNetwork: hiddenNetwork, text: text, firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber, workNumber: workNumber, address: address, url: url, network: network, password: password, encryptionType: encryptionType, qrImage: qrImage)
     }
     
-    mutating func update(from data: Data) {
+    
+    // it's not pretty, but I needed to updated the qrImage in here when the qr Code gets updated via the detail view edit button.
+    mutating func update(from data: Datas) {
         title = data.title
         qrCodeType = data.qrCodeType
         complexContact = data.complexContact
@@ -181,5 +190,114 @@ extension QRCode {
         network = data.network
         password = data.password
         encryptionType = data.encryptionType
+        qrImage = generateQRCode(from: stringFromQRData(codeData: data)).pngData()
     }
+    
+    private func generateQRCode(from string: String) -> UIImage {
+        let data = Data(string.utf8)
+        let context = CIContext()
+        let filter = CIFilter.qrCodeGenerator()
+        
+        filter.setValue(data, forKey: "inputMessage")
+        
+        if let outputImage = filter.outputImage {
+            if let cgImage = context.createCGImage(outputImage, from: outputImage.extent) {
+                return UIImage(cgImage: cgImage)
+            }
+        }
+        return UIImage(systemName: "xmark.circle") ?? UIImage()
+    }
+    
+    
+    private func stringFromQRData(codeData: QRCode.Datas) -> String {
+        
+        if codeData.qrCodeType == "Text" {
+            return codeData.text
+            
+        } else if codeData.qrCodeType == "URL" {
+            return codeData.url
+            
+        } else if codeData.qrCodeType == "Email" {
+            return "mailto:\(codeData.email)"
+            
+        } else if codeData.qrCodeType == "Wi-Fi Access" {
+            if codeData.encryptionType == "None" {
+                return "WIFI:T:nopass;S:\(codeData.network);H:;;"
+                
+            } else if codeData.encryptionType == "WEP" {
+                return "WIFI:T:WEP;S:\(codeData.network);P:\(codeData.password);H:\(codeData.hiddenNetwork);;"
+                
+            } else if codeData.encryptionType == "WPA/WPA2" {
+                return "WIFI:T:WPA;S:\(codeData.network);P:\(codeData.password);H:\(codeData.hiddenNetwork);;"
+            }
+            
+        } else if codeData.qrCodeType == "Contact" {
+            if codeData.complexContact == false {
+                return "MECARD:N:\(codeData.lastName),\(codeData.firstName);TEL:\(codeData.phoneNumber);EMAIL:\(codeData.email);;"
+                
+            } else if codeData.complexContact {
+                if (codeData.address == "" && codeData.url == "http://") || (codeData.address == "" && codeData.url == "") {
+                    return
+                        """
+                        BEGIN:VCARD
+                        VERSION:2.1
+                        N:\(codeData.lastName);\(codeData.firstName);;;
+                        TEL;HOME;VOICE:\(codeData.phoneNumber)
+                        TEL;WORK;VOICE:\(codeData.workNumber)
+                        EMAIL:\(codeData.email)
+                        END:VCARD
+                        """
+                    
+                } else if codeData.address == "" {
+                    return
+                        """
+                        BEGIN:VCARD
+                        VERSION:2.1
+                        N:\(codeData.lastName);\(codeData.firstName);;;
+                        TEL;HOME;VOICE:\(codeData.phoneNumber)
+                        TEL;WORK;VOICE:\(codeData.workNumber)
+                        EMAIL:\(codeData.email)
+                        URL:\(codeData.url)
+                        END:VCARD
+                        """
+                    
+                } else if codeData.url == "http://" || codeData.url == ""  {
+                    return
+                        """
+                        BEGIN:VCARD
+                        VERSION:2.1
+                        N:\(codeData.lastName);\(codeData.firstName);;;
+                        TEL;HOME;VOICE:\(codeData.phoneNumber)
+                        TEL;WORK;VOICE:\(codeData.workNumber)
+                        ADR:\(codeData.address)
+                        EMAIL:\(codeData.email)
+                        END:VCARD
+                        """
+                    
+                } else {
+                    return
+                        """
+                    BEGIN:VCARD
+                    VERSION:2.1
+                    N:\(codeData.lastName);\(codeData.firstName);;;
+                    TEL;HOME;VOICE:\(codeData.phoneNumber)
+                    TEL;WORK;VOICE:\(codeData.workNumber)
+                    ADR:\(codeData.address)
+                    EMAIL:\(codeData.email)
+                    URL:\(codeData.url)
+                    END:VCARD
+                    """
+                }
+            }
+        }
+        return "Didn't find anything to turn into a QR code."
+        
+    }
+
+    
+    
+    
+    
+    
+    
 }

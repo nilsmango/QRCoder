@@ -10,10 +10,13 @@ import SwiftUI
 struct WatchDetailView: View {
     let code: WatchCode
     var body: some View {
-        VStack {
-//            qrCodeImage here omg
-        }
-        .navigationTitle(code.title)
+        
+        Image("q")
+            .interpolation(.none)
+            .resizable()
+            .scaledToFit()
+            .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
+       // .navigationTitle(code.title)
     }
 }
 

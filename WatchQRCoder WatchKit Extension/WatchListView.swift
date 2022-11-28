@@ -14,7 +14,7 @@ struct WatchCode: Identifiable {
 }
 
 struct WatchListView: View {
-    private var qrCodes = [WatchCode(title: "First Code", qrString: "First Code"), WatchCode(title: "Another Code", qrString: "Second Code"), WatchCode(title: "This is a longer name", qrString: "Really long stupid qr code")]
+    private var qrCodes: [WatchCode] = [WatchCode(title: "First Code", qrString: "First Code"), WatchCode(title: "Another Code", qrString: "Second Code"), WatchCode(title: "This is a longer name but we don't care", qrString: "Really long stupid qr code")]
     
     
     var body: some View {
@@ -26,6 +26,7 @@ struct WatchListView: View {
                                 Text(code.title)
                         }
                     }
+                    
 //                    .onDelete { indexSet in
 //                        qrCodes.delete(at: indexSet)
 //                    }
@@ -37,7 +38,7 @@ struct WatchListView: View {
                 if qrCodes.isEmpty {
                     VStack {
                         Text("- Wow, such empty -")
-                        Text("Go to your iPhone and add QR Codes there")
+                        Text("Open QRCoder on your iPhone, add QR Codes there and they will show up here.")
                     }
                     .foregroundColor(.secondary)
                 }
