@@ -18,6 +18,29 @@ struct DetailView: View {
     @State private var shareSheetPresented = false
     @State private var items: [Any] = []
     
+    var watchConnection: WatchConnection
+    
+    private func updateWatchList() {
+        var codesDictionary: [String : Any] = [:]
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            
+            for code in myData.codes {
+                // check if code.title already exists and change title if it does; yes only triplets are ok
+                if codesDictionary[code.title] == nil {
+                    codesDictionary[code.title] = code.qrImage
+                } else if codesDictionary[code.title + " 2"] == nil {
+                    codesDictionary[code.title + " 2"] = code.qrImage
+                } else {
+                    codesDictionary[code.title + " 3"] = code.qrImage
+                }
+                
+            }
+            
+            watchConnection.session.sendMessage(codesDictionary, replyHandler: nil)
+        }
+    }
+    
     var qrView: some View {
         QRCodeView(qrString: qrData.qrString)
             .padding(.bottom, 40)
@@ -56,6 +79,9 @@ struct DetailView: View {
                 }
 
                 myData.codes.remove(at: index)
+                
+                updateWatchList()
+                
             } content: {
                 Label("Delete", systemImage: "trash")
 //                    .foregroundColor(.red)
@@ -79,6 +105,8 @@ struct DetailView: View {
                             fatalError("couldn't find the index for data")
                         }
                         myData.codes[index].update(from: data)
+                        
+                        updateWatchList()
                     })
             }
         }
@@ -94,7 +122,7 @@ struct DetailView: View {
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            DetailView(myData: QRData(), qrData: QRCode.sampleData[0])
+            DetailView(myData: QRData(), qrData: QRCode.sampleData[0], watchConnection: WatchConnection())
         }
         
     }

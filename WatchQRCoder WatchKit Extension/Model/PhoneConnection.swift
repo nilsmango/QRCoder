@@ -7,7 +7,6 @@
 
 import Foundation
 import WatchConnectivity
-import SwiftUI
 
 
 class PhoneConnection: NSObject, WCSessionDelegate, ObservableObject {
@@ -38,7 +37,23 @@ class PhoneConnection: NSObject, WCSessionDelegate, ObservableObject {
                 // only append the new QR code from iphone
                 let title = message.keys.first
                 let qrImage = message.values.first
-                let newWatchCode = WatchCode(title: (title ?? "no title found") as String, qrImage: qrImage as? Data)
+                // find if new code is duplicate title, and change it
+                let newWatchCode: WatchCode
+                if (self.codes.filter{ $0.title == title }).count > 0 {
+                    let count = String((self.codes.filter{ $0.title == title }).count + 1)
+                    let newTitle = title! + " " + count
+                    if (self.codes.filter{ $0.title == newTitle }).count > 0 {
+                        let count2 = String((self.codes.filter{ $0.title == newTitle }).count + 2)
+                        // TODO: count anfügen, und bei newTitle, der letzte Buchstaben entfernen.
+                        let newestTitle = newTitle.dropLast() + count2
+                        newWatchCode = WatchCode(title: String(newestTitle), qrImage: qrImage as? Data)
+                    } else {
+                        newWatchCode = WatchCode(title: newTitle as String, qrImage: qrImage as? Data)
+                    }
+                    
+                } else {
+                    newWatchCode = WatchCode(title: (title ?? "no title found") as String, qrImage: qrImage as? Data)
+                }
                 self.codes.append(newWatchCode)
                 print(title!)
                 self.codes.sort {

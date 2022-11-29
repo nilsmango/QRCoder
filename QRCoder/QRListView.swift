@@ -23,6 +23,29 @@ struct QRListView: View {
     
     @State private var appearedOnce = false
     
+    private func updateCompleteQRList() {
+        var codesDictionary: [String : Any] = [:]
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            
+            for code in myData.codes {
+                // check if code.title already exists and change title if it does; yes only triplets are ok
+                if codesDictionary[code.title] == nil {
+                    codesDictionary[code.title] = code.qrImage
+                } else if codesDictionary[code.title + " 2"] == nil {
+                    codesDictionary[code.title + " 2"] = code.qrImage
+                } else {
+                    codesDictionary[code.title + " 3"] = code.qrImage
+                }
+                
+            }
+            
+            watchConnection.session.sendMessage(codesDictionary, replyHandler: nil)
+            
+            appearedOnce = true
+        }
+    }
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -37,7 +60,7 @@ struct QRListView: View {
                 ZStack {
                     List {
                         ForEach(myData.codes) { qrData in
-                            NavigationLink(destination: DetailView(myData: myData, qrData: qrData)) {
+                            NavigationLink(destination: DetailView(myData: myData, qrData: qrData, watchConnection: watchConnection)) {
                                 VStack {
                                     QRCodeView(qrString: qrData.qrString)
                                     Text(qrData.title)
@@ -47,6 +70,7 @@ struct QRListView: View {
                         }
                         .onDelete { indexSet in
                             myData.delete(at: indexSet)
+                            updateCompleteQRList()
                         }
                         .onMove { indexSet, newPlace in
                             myData.move(from: indexSet, to: newPlace)
@@ -109,27 +133,13 @@ struct QRListView: View {
             .onChange(of: scenePhase) { phase in
                 if phase == .inactive {
                     saveAction()
-               }
+                }
             }
             .onAppear() {
                 if appearedOnce == false {
-                    
-                    var codesDictionary: [String : Any] = [:]
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                        var cleanedCodeArray = myData.codes
-                        
-                        
-                        for code in myData.codes {
-                            codesDictionary[code.title] = code.qrImage
-                        }
-                        print(codesDictionary)
-                        
-                        watchConnection.session.sendMessage(codesDictionary, replyHandler: nil)
-                        appearedOnce = true
-                    }
+                    updateCompleteQRList()
                 }
-
+                
             }
         }
     }
@@ -138,9 +148,9 @@ struct QRListView: View {
 struct QRListView_Previews: PreviewProvider {
     static var previews: some View {
         QRListView(myData: QRData(), saveAction: {})
-
+        
         QRListView(myData: QRData(), saveAction: {})
-                    .preferredColorScheme(.dark)
+            .preferredColorScheme(.dark)
     }
     
     
