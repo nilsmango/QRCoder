@@ -9,7 +9,7 @@ import Foundation
 
 
 
-struct WatchCode: Identifiable {
+struct WatchCode: Identifiable, Codable {
     var title: String
     var qrImage: Data?
     let id = UUID()

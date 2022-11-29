@@ -106,7 +106,7 @@ struct QRListView: View {
                             myData.codes.append(newCode)
                             
                             // send the new qrCode to the apple watch
-                            watchConnection.session.sendMessage([newCode.title : newCode.qrImage!], replyHandler: nil)
+                            updateCompleteQRList()
                             
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                 newCodeData.title = ""

@@ -11,9 +11,8 @@ import SwiftUI
 
 struct WatchListView: View {
     
-    private var qrCodes: [WatchCode] = [WatchCode(title: "First Code"), WatchCode(title: "Another Code"), WatchCode(title: "This is a longer name but we don't care")]
-    
     @ObservedObject var phoneConnection = PhoneConnection()
+    @State private var appearedOnce = false
     
     var body: some View {
         NavigationView {
@@ -33,11 +32,14 @@ struct WatchListView: View {
                     .foregroundColor(.secondary)
                 }
             }
-        }
-        .navigationTitle("QRCoder")
-            
-            
-        
+            .onAppear() {
+                if appearedOnce == false {
+                    phoneConnection.load()
+                    appearedOnce = true
+                }
+            }
+            }
+            .navigationTitle("QRCoder")
         
     }
 }

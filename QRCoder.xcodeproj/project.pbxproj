@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		786B5024272AFACE0001CEDA /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEFE7927064D63008B2DA3 /* QRCode.swift */; };
 		786B5025272AFE230001CEDA /* QRCoderWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 78FD9004272ACC070094DA3A /* QRCoderWidget.intentdefinition */; };
+		786F2EEE2936931100F5AD4C /* ExtensionUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786F2EED2936931100F5AD4C /* ExtensionUserDefaults.swift */; };
 		78A41C18293513850062D9D7 /* QRCoderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F70D0E273582BC002453B3 /* QRCoderApp.swift */; };
 		78A41C19293513850062D9D7 /* WatchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F70D0C273582BC002453B3 /* WatchListView.swift */; };
 		78A41C1A293513850062D9D7 /* WatchDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F70D2427358609002453B3 /* WatchDetailView.swift */; };
@@ -120,6 +121,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		786F2EED2936931100F5AD4C /* ExtensionUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUserDefaults.swift; sourceTree = "<group>"; };
 		788005DF270D9CF400FFB113 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		788005E1270D9CF400FFB113 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		78A41C1B293534230062D9D7 /* WatchConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnection.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			children = (
 				78A41C22293542A90062D9D7 /* WatchCode.swift */,
 				78A41C1E293537FF0062D9D7 /* PhoneConnection.swift */,
+				786F2EED2936931100F5AD4C /* ExtensionUserDefaults.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 			files = (
 				78A41C18293513850062D9D7 /* QRCoderApp.swift in Sources */,
 				78A41C1A293513850062D9D7 /* WatchDetailView.swift in Sources */,
+				786F2EEE2936931100F5AD4C /* ExtensionUserDefaults.swift in Sources */,
 				78A41C1F293537FF0062D9D7 /* PhoneConnection.swift in Sources */,
 				78A41C19293513850062D9D7 /* WatchListView.swift in Sources */,
 				78F70D11273582BC002453B3 /* ComplicationController.swift in Sources */,

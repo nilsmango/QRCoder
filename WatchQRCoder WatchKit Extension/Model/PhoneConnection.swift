@@ -33,58 +33,48 @@ class PhoneConnection: NSObject, WCSessionDelegate, ObservableObject {
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         DispatchQueue.main.async {
-            if message.count == 1 {
-                // only append the new QR code from iphone
-                let title = message.keys.first
-                let qrImage = message.values.first
-                // find if new code is duplicate title, and change it
-                let newWatchCode: WatchCode
-                if (self.codes.filter{ $0.title == title }).count > 0 {
-                    let count = String((self.codes.filter{ $0.title == title }).count + 1)
-                    let newTitle = title! + " " + count
-                    if (self.codes.filter{ $0.title == newTitle }).count > 0 {
-                        let count2 = String((self.codes.filter{ $0.title == newTitle }).count + 2)
-                        // TODO: count anfügen, und bei newTitle, der letzte Buchstaben entfernen.
-                        let newestTitle = newTitle.dropLast() + count2
-                        newWatchCode = WatchCode(title: String(newestTitle), qrImage: qrImage as? Data)
-                    } else {
-                        newWatchCode = WatchCode(title: newTitle as String, qrImage: qrImage as? Data)
-                    }
-                    
-                } else {
-                    newWatchCode = WatchCode(title: (title ?? "no title found") as String, qrImage: qrImage as? Data)
-                }
-                self.codes.append(newWatchCode)
-                print(title!)
-                self.codes.sort {
-                    $0.title < $1.title
-                }
-                
-            } else {
-                print("Mapping in progress")
-                let titles = message.map {$0.key}
-                let qrImages = message.map {$0.value}
-                print(titles, qrImages)
-                
-                var newWatchCodes: [WatchCode] = []
-                
-                for index in 0..<titles.count {
-                    let title = titles[index]
-                    let qrImage = qrImages[index]
-                    print(title, qrImage)
-                    let newData = WatchCode(title: title, qrImage: qrImage as? Data)
-                    newWatchCodes.append(newData)
-                    
-                }
-                print(newWatchCodes)
-                newWatchCodes.sort {
-                    $0.title < $1.title
-                }
-                
-                self.codes = newWatchCodes
+            print("Mapping in progress")
+            let titles = message.map {$0.key}
+            let qrImages = message.map {$0.value}
+            print(titles, qrImages)
+            
+            var newWatchCodes: [WatchCode] = []
+            
+            for index in 0..<titles.count {
+                let title = titles[index]
+                let qrImage = qrImages[index]
+                print(title, qrImage)
+                let newData = WatchCode(title: title, qrImage: qrImage as? Data)
+                newWatchCodes.append(newData)
                 
             }
+            print(newWatchCodes)
+            newWatchCodes.sort {
+                $0.title < $1.title
+            }
+            
+            self.codes = newWatchCodes
+            
+            self.save()
+            
+            
         }
     }
     
+    
+    
+    // Load and save the local watch QR codes, works because of the extension. I honestly don't understand how.
+    
+    let saveKey = "WatchCodes"
+    
+    func load() {
+        let defaults = UserDefaults.standard
+        codes = try! defaults.decode([WatchCode].self, forKey: saveKey) ?? []
+    }
+    
+    func save() {
+        let defaults = UserDefaults.standard
+        try? defaults.encode(codes, forKey: saveKey)
+
+    }
 }
