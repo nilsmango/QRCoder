@@ -12,6 +12,11 @@
 		78A41C18293513850062D9D7 /* QRCoderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F70D0E273582BC002453B3 /* QRCoderApp.swift */; };
 		78A41C19293513850062D9D7 /* WatchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F70D0C273582BC002453B3 /* WatchListView.swift */; };
 		78A41C1A293513850062D9D7 /* WatchDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F70D2427358609002453B3 /* WatchDetailView.swift */; };
+		78A41C1C293534230062D9D7 /* WatchConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A41C1B293534230062D9D7 /* WatchConnection.swift */; };
+		78A41C1F293537FF0062D9D7 /* PhoneConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A41C1E293537FF0062D9D7 /* PhoneConnection.swift */; };
+		78A41C2029353D440062D9D7 /* WatchConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A41C1B293534230062D9D7 /* WatchConnection.swift */; };
+		78A41C2129353D440062D9D7 /* WatchConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A41C1B293534230062D9D7 /* WatchConnection.swift */; };
+		78A41C23293542A90062D9D7 /* WatchCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A41C22293542A90062D9D7 /* WatchCode.swift */; };
 		78EEFE6C27064D47008B2DA3 /* QRCoderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEFE6B27064D47008B2DA3 /* QRCoderApp.swift */; };
 		78EEFE7027064D48008B2DA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78EEFE6F27064D48008B2DA3 /* Assets.xcassets */; };
 		78EEFE7327064D48008B2DA3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78EEFE7227064D48008B2DA3 /* Preview Assets.xcassets */; };
@@ -117,6 +122,9 @@
 /* Begin PBXFileReference section */
 		788005DF270D9CF400FFB113 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		788005E1270D9CF400FFB113 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		78A41C1B293534230062D9D7 /* WatchConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnection.swift; sourceTree = "<group>"; };
+		78A41C1E293537FF0062D9D7 /* PhoneConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneConnection.swift; sourceTree = "<group>"; };
+		78A41C22293542A90062D9D7 /* WatchCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchCode.swift; sourceTree = "<group>"; };
 		78CBA5242731C3EF00710496 /* QRCoder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QRCoder.entitlements; sourceTree = "<group>"; };
 		78CBA5252731C46A00710496 /* QRCoderWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QRCoderWidgetExtension.entitlements; sourceTree = "<group>"; };
 		78CBA5262731C47600710496 /* QRCoderWidgetIntentHandler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QRCoderWidgetIntentHandler.entitlements; sourceTree = "<group>"; };
@@ -203,6 +211,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		78A41C1D293537E80062D9D7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				78A41C22293542A90062D9D7 /* WatchCode.swift */,
+				78A41C1E293537FF0062D9D7 /* PhoneConnection.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		78EEFE5F27064D47008B2DA3 = {
 			isa = PBXGroup;
 			children = (
@@ -257,6 +274,7 @@
 		78EEFE7B27064D67008B2DA3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				78A41C1B293534230062D9D7 /* WatchConnection.swift */,
 				78EEFE7927064D63008B2DA3 /* QRCode.swift */,
 				78EEFE7C2706509D008B2DA3 /* QRData.swift */,
 			);
@@ -285,6 +303,7 @@
 		78F70D0B273582BC002453B3 /* WatchQRCoder WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				78A41C1D293537E80062D9D7 /* Model */,
 				78F70D0E273582BC002453B3 /* QRCoderApp.swift */,
 				78F70D0C273582BC002453B3 /* WatchListView.swift */,
 				78F70D2427358609002453B3 /* WatchDetailView.swift */,
@@ -524,6 +543,7 @@
 				78EEFE8727075D71008B2DA3 /* EditView.swift in Sources */,
 				78EEFE83270710FD008B2DA3 /* QRListView.swift in Sources */,
 				78EEFE8C2707A327008B2DA3 /* QRCodeView.swift in Sources */,
+				78A41C1C293534230062D9D7 /* WatchConnection.swift in Sources */,
 				78EEFE6C27064D47008B2DA3 /* QRCoderApp.swift in Sources */,
 				78EEFE8E2707A3EA008B2DA3 /* HelperFunctions.swift in Sources */,
 				78EEFE7A27064D63008B2DA3 /* QRCode.swift in Sources */,
@@ -537,8 +557,10 @@
 			files = (
 				78A41C18293513850062D9D7 /* QRCoderApp.swift in Sources */,
 				78A41C1A293513850062D9D7 /* WatchDetailView.swift in Sources */,
+				78A41C1F293537FF0062D9D7 /* PhoneConnection.swift in Sources */,
 				78A41C19293513850062D9D7 /* WatchListView.swift in Sources */,
 				78F70D11273582BC002453B3 /* ComplicationController.swift in Sources */,
+				78A41C23293542A90062D9D7 /* WatchCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,6 +569,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78FD9011272ACE050094DA3A /* QRData.swift in Sources */,
+				78A41C2029353D440062D9D7 /* WatchConnection.swift in Sources */,
 				78FD9003272ACC070094DA3A /* QRCoderWidget.swift in Sources */,
 				78FD9012272ACFA90094DA3A /* HelperFunctions.swift in Sources */,
 				78FD9008272ACC080094DA3A /* QRCoderWidget.intentdefinition in Sources */,
@@ -559,6 +582,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78FD901B272AF6740094DA3A /* IntentHandler.swift in Sources */,
+				78A41C2129353D440062D9D7 /* WatchConnection.swift in Sources */,
 				786B5024272AFACE0001CEDA /* QRCode.swift in Sources */,
 				78FD9024272AF96F0094DA3A /* QRData.swift in Sources */,
 				786B5025272AFE230001CEDA /* QRCoderWidget.intentdefinition in Sources */,

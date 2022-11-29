@@ -27,7 +27,6 @@ struct DetailView: View {
 
     }
     
-    
     var body: some View {
         VStack {
             QRCodeView(qrString: qrData.qrString)
@@ -51,8 +50,6 @@ struct DetailView: View {
                 Label("Share", systemImage: "square.and.arrow.up")
             }
 
-            
-            
             ButtonView {
                 guard let index = myData.codes.firstIndex(where: { $0.id == qrData.id }) else {
                     fatalError("couldn't find the index for data")
@@ -66,15 +63,7 @@ struct DetailView: View {
             .padding(10)
             
             Spacer()
-            
-           // Image(uiImage: UIImage(data: qrData.qrImage!)!)
-            //    .interpolation(.none)
-            //    .resizable()
-           //     .scaledToFit()
-            
-            
-            
-            
+
         }
         
         .navigationTitle(qrData.title)

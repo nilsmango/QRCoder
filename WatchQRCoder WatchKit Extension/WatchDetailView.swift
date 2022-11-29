@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct WatchDetailView: View {
-    let code: WatchCode
+    let image: Data?
     var body: some View {
         
-        Image("q")
+        Image(uiImage: UIImage(data: image!)!)
             .interpolation(.none)
             .resizable()
             .scaledToFit()
@@ -22,6 +22,6 @@ struct WatchDetailView: View {
 
 struct WatchDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        WatchDetailView(code: WatchCode(title: "Name of QR", qrString: "Something"))
+        WatchDetailView(image: nil)
     }
 }

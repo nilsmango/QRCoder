@@ -7,38 +7,28 @@
 
 import SwiftUI
 
-struct WatchCode: Identifiable {
-    var title: String
-    var qrString: String
-    let id = UUID()
-}
+
 
 struct WatchListView: View {
-    private var qrCodes: [WatchCode] = [WatchCode(title: "First Code", qrString: "First Code"), WatchCode(title: "Another Code", qrString: "Second Code"), WatchCode(title: "This is a longer name but we don't care", qrString: "Really long stupid qr code")]
     
+    private var qrCodes: [WatchCode] = [WatchCode(title: "First Code"), WatchCode(title: "Another Code"), WatchCode(title: "This is a longer name but we don't care")]
+    
+    @ObservedObject var phoneConnection = PhoneConnection()
     
     var body: some View {
         NavigationView {
             ZStack {
                 List {
-                    ForEach(qrCodes) { code in
-                        NavigationLink(destination: WatchDetailView(code: code)) {
-                                Text(code.title)
+                    ForEach(phoneConnection.codes) { code in
+                        NavigationLink(destination: WatchDetailView(image: code.qrImage)) {
+                            Text(code.title)
                         }
                     }
-                    
-//                    .onDelete { indexSet in
-//                        qrCodes.delete(at: indexSet)
-//                    }
-//                    .onMove { indexSet, newPlace in
-//                        qrCodes.move(from: indexSet, to: newPlace)
-//                    }
-                    
                 }
-                if qrCodes.isEmpty {
+                if phoneConnection.codes.isEmpty {
                     VStack {
                         Text("- Wow, such empty -")
-                        Text("Open QRCoder on your iPhone, add QR Codes there and they will show up here.")
+                        Text("Open QRCoder on your iPhone and add QR Codes there to make them show up here.")
                     }
                     .foregroundColor(.secondary)
                 }

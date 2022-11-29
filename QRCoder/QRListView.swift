@@ -19,9 +19,14 @@ struct QRListView: View {
     
     let saveAction: () -> Void
     
+    var watchConnection = WatchConnection()
+    
+    @State private var appearedOnce = false
+    
     var body: some View {
         NavigationView {
             VStack {
+                
                 ButtonView {
                     isPresented = true
                 } content: {
@@ -76,6 +81,9 @@ struct QRListView: View {
                             
                             myData.codes.append(newCode)
                             
+                            // send the new qrCode to the apple watch
+                            watchConnection.session.sendMessage([newCode.title : newCode.qrImage!], replyHandler: nil)
+                            
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                 newCodeData.title = ""
                                 newCodeData.qrCodeType = "Text"
@@ -99,7 +107,29 @@ struct QRListView: View {
                 }
             })
             .onChange(of: scenePhase) { phase in
-                if phase == .inactive { saveAction() }
+                if phase == .inactive {
+                    saveAction()
+               }
+            }
+            .onAppear() {
+                if appearedOnce == false {
+                    
+                    var codesDictionary: [String : Any] = [:]
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                        var cleanedCodeArray = myData.codes
+                        
+                        
+                        for code in myData.codes {
+                            codesDictionary[code.title] = code.qrImage
+                        }
+                        print(codesDictionary)
+                        
+                        watchConnection.session.sendMessage(codesDictionary, replyHandler: nil)
+                        appearedOnce = true
+                    }
+                }
+
             }
         }
     }
