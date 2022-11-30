@@ -16,6 +16,7 @@ struct QRListView: View {
     @State private var isPresented = false
     @State private var newCodeData = QRCode.Datas()
     @State private var editMode: EditMode = .inactive
+    @State private var presentOptions = false
     
     let saveAction: () -> Void
     
@@ -24,26 +25,30 @@ struct QRListView: View {
     @State private var appearedOnce = false
     
     private func updateCompleteQRList() {
-        var codesDictionary: [String : Any] = [:]
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            
-            for code in myData.codes {
-                // check if code.title already exists and change title if it does; yes only triplets are ok
-                if codesDictionary[code.title] == nil {
-                    codesDictionary[code.title] = code.qrImage
-                } else if codesDictionary[code.title + " 2"] == nil {
-                    codesDictionary[code.title + " 2"] = code.qrImage
-                } else {
-                    codesDictionary[code.title + " 3"] = code.qrImage
+
+        if watchConnection.session.activationState == .activated {
+            var codesDictionary: [String : Any] = [:]
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                
+                for code in myData.codes {
+                    // check if code.title already exists and change title if it does; yes only triplets are ok
+                    if codesDictionary[code.title] == nil {
+                        codesDictionary[code.title] = code.qrImage
+                    } else if codesDictionary[code.title + " 2"] == nil {
+                        codesDictionary[code.title + " 2"] = code.qrImage
+                    } else {
+                        codesDictionary[code.title + " 3"] = code.qrImage
+                    }
+                    
                 }
                 
+                watchConnection.session.sendMessage(codesDictionary, replyHandler: nil)
+                
+                appearedOnce = true
             }
-            
-            watchConnection.session.sendMessage(codesDictionary, replyHandler: nil)
-            
-            appearedOnce = true
         }
+        
+        
     }
     
     var body: some View {
@@ -89,8 +94,24 @@ struct QRListView: View {
             .navigationTitle("QRCoder")
             .toolbar {
                 EditButton()
+                Button(action: { presentOptions = true }) { Label("Options", systemImage: "info.circle")}
             }
             .environment(\.editMode, $editMode)
+            .fullScreenCover(isPresented: $presentOptions, content: {
+                NavigationView {
+                    OptionView()
+                        .navigationTitle("Info")
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button("Dismiss") {
+                                    presentOptions = false
+                                }
+                            }
+                        }
+                }
+            }
+            
+            )
             .fullScreenCover(isPresented: $isPresented, content: {
                 NavigationView {
                     EditView(codeData: $newCodeData)

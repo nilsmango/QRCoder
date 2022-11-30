@@ -21,24 +21,27 @@ struct DetailView: View {
     var watchConnection: WatchConnection
     
     private func updateWatchList() {
-        var codesDictionary: [String : Any] = [:]
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            
-            for code in myData.codes {
-                // check if code.title already exists and change title if it does; yes only triplets are ok
-                if codesDictionary[code.title] == nil {
-                    codesDictionary[code.title] = code.qrImage
-                } else if codesDictionary[code.title + " 2"] == nil {
-                    codesDictionary[code.title + " 2"] = code.qrImage
-                } else {
-                    codesDictionary[code.title + " 3"] = code.qrImage
+        if watchConnection.session.activationState == .activated {
+            var codesDictionary: [String : Any] = [:]
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                
+                for code in myData.codes {
+                    // check if code.title already exists and change title if it does; yes only triplets are ok
+                    if codesDictionary[code.title] == nil {
+                        codesDictionary[code.title] = code.qrImage
+                    } else if codesDictionary[code.title + " 2"] == nil {
+                        codesDictionary[code.title + " 2"] = code.qrImage
+                    } else {
+                        codesDictionary[code.title + " 3"] = code.qrImage
+                    }
+                    
                 }
                 
+                watchConnection.session.sendMessage(codesDictionary, replyHandler: nil)
             }
-            
-            watchConnection.session.sendMessage(codesDictionary, replyHandler: nil)
         }
+        
     }
     
     var qrView: some View {

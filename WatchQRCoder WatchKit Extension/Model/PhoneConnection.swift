@@ -32,6 +32,7 @@ class PhoneConnection: NSObject, WCSessionDelegate, ObservableObject {
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        
         DispatchQueue.main.async {
             print("Mapping in progress")
             let titles = message.map {$0.key}

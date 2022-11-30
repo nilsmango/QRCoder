@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7827667D29374DDD00E3F74D /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7827667C29374DDD00E3F74D /* OptionView.swift */; };
 		786B5024272AFACE0001CEDA /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEFE7927064D63008B2DA3 /* QRCode.swift */; };
 		786B5025272AFE230001CEDA /* QRCoderWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 78FD9004272ACC070094DA3A /* QRCoderWidget.intentdefinition */; };
 		786F2EEE2936931100F5AD4C /* ExtensionUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786F2EED2936931100F5AD4C /* ExtensionUserDefaults.swift */; };
@@ -121,6 +122,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7827667C29374DDD00E3F74D /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		786F2EED2936931100F5AD4C /* ExtensionUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUserDefaults.swift; sourceTree = "<group>"; };
 		788005DF270D9CF400FFB113 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		788005E1270D9CF400FFB113 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -258,6 +260,7 @@
 				78EEFE84270714F3008B2DA3 /* DetailView.swift */,
 				78EEFE8627075D71008B2DA3 /* EditView.swift */,
 				78EEFE8B2707A327008B2DA3 /* QRCodeView.swift */,
+				7827667C29374DDD00E3F74D /* OptionView.swift */,
 				78EEFE8A27076BDE008B2DA3 /* Helper */,
 				78EEFE7B27064D67008B2DA3 /* Model */,
 				78EEFE6F27064D48008B2DA3 /* Assets.xcassets */,
@@ -547,6 +550,7 @@
 				78EEFE83270710FD008B2DA3 /* QRListView.swift in Sources */,
 				78EEFE8C2707A327008B2DA3 /* QRCodeView.swift in Sources */,
 				78A41C1C293534230062D9D7 /* WatchConnection.swift in Sources */,
+				7827667D29374DDD00E3F74D /* OptionView.swift in Sources */,
 				78EEFE6C27064D47008B2DA3 /* QRCoderApp.swift in Sources */,
 				78EEFE8E2707A3EA008B2DA3 /* HelperFunctions.swift in Sources */,
 				78EEFE7A27064D63008B2DA3 /* QRCode.swift in Sources */,
