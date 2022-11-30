@@ -21,6 +21,7 @@ struct WatchListView: View {
                     ForEach(phoneConnection.codes) { code in
                         NavigationLink(destination: WatchDetailView(image: code.qrImage)) {
                             Text(code.title)
+                                .accessibilityLabel("QR code title")
                         }
                     }
                 }

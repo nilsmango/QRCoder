@@ -31,7 +31,7 @@ class PhoneConnection: NSObject, WCSessionDelegate, ObservableObject {
         }
     }
     
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+    func session(_ session: WCSession, didReceiveUserInfo message: [String : Any]) {
         
         DispatchQueue.main.async {
             print("Mapping in progress")

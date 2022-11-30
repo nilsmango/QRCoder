@@ -25,11 +25,9 @@ struct QRListView: View {
     @State private var appearedOnce = false
     
     private func updateCompleteQRList() {
-
+        print("Trying to send list")
         if watchConnection.session.activationState == .activated {
             var codesDictionary: [String : Any] = [:]
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                
                 for code in myData.codes {
                     // check if code.title already exists and change title if it does; yes only triplets are ok
                     if codesDictionary[code.title] == nil {
@@ -42,10 +40,10 @@ struct QRListView: View {
                     
                 }
                 
-                watchConnection.session.sendMessage(codesDictionary, replyHandler: nil)
+                watchConnection.session.transferUserInfo(codesDictionary)
                 
                 appearedOnce = true
-            }
+            
         }
         
         
@@ -67,8 +65,9 @@ struct QRListView: View {
                         ForEach(myData.codes) { qrData in
                             NavigationLink(destination: DetailView(myData: myData, qrData: qrData, watchConnection: watchConnection)) {
                                 VStack {
-                                    QRCodeView(qrString: qrData.qrString)
+                                    QRCodeView(qrString: qrData.qrString).accessibilityLabel("QR code")
                                     Text(qrData.title)
+                                        .accessibilityLabel("QR code title")
                                         .font(.subheadline)
                                 }
                             }
@@ -81,6 +80,9 @@ struct QRListView: View {
                             myData.move(from: indexSet, to: newPlace)
                         }
                         
+                    }
+                    .refreshable() {
+                        updateCompleteQRList()
                     }
                     if myData.codes.isEmpty {
                         VStack {
@@ -129,6 +131,7 @@ struct QRListView: View {
                             // send the new qrCode to the apple watch
                             updateCompleteQRList()
                             
+                            
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                 newCodeData.title = ""
                                 newCodeData.qrCodeType = "Text"
@@ -158,7 +161,9 @@ struct QRListView: View {
             }
             .onAppear() {
                 if appearedOnce == false {
-                    updateCompleteQRList()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                        updateCompleteQRList()
+                    }
                 }
                 
             }

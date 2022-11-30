@@ -16,6 +16,7 @@ struct WatchDetailView: View {
             .resizable()
             .scaledToFit()
             .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
+            .accessibilityLabel("QR code")
        // .navigationTitle(code.title)
     }
 }
