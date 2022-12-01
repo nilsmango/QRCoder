@@ -11,7 +11,9 @@ struct OptionView: View {
     var body: some View {
         List {
             Section(header: Text("Why is my watch not showing any QR codes?")) {
-                Text("Make sure the watch app is installed. Open both the watch app and the iPhone app to update the QR codes list on the watch. If you have both open and nothing happens you can try to pull down the QR code list to send the data again.")
+                Text("Make sure the watch app is installed. Open both the watch app and the iPhone app to update the QR codes list on the watch.")
+                Text("If you have both open and nothing happens you can try to pull down the QR code list to send the data again.")
+                Text("Sometimes it just takes some time for the data to get transferred, if everything works the data will also get transferred in the background and updated the next time you open your watch app.")
             }
             Section(header: Text("What about all my other questions?"), footer: Text("Version 1.0 - Made with ❤️ by [Nils Mango](https://nilsmango.ch), Switzerland and Tenerife, 2022.")) {
                 

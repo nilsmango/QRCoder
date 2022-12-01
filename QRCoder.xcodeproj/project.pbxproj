@@ -30,7 +30,6 @@
 		78EEFE8927076606008B2DA3 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEFE8827076606008B2DA3 /* ButtonView.swift */; };
 		78EEFE8C2707A327008B2DA3 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEFE8B2707A327008B2DA3 /* QRCodeView.swift */; };
 		78EEFE8E2707A3EA008B2DA3 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEFE8D2707A3EA008B2DA3 /* HelperFunctions.swift */; };
-		78F2007B2708B09200C5CECF /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F2007A2708B09200C5CECF /* ShareSheet.swift */; };
 		78F2007D2708B18300C5CECF /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F2007C2708B18300C5CECF /* Snapshot.swift */; };
 		78F70D02273582BC002453B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78F70D01273582BC002453B3 /* Assets.xcassets */; };
 		78F70D08273582BC002453B3 /* WatchQRCoder WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 78F70D07273582BC002453B3 /* WatchQRCoder WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -147,7 +146,6 @@
 		78EEFE8827076606008B2DA3 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		78EEFE8B2707A327008B2DA3 /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
 		78EEFE8D2707A3EA008B2DA3 /* HelperFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
-		78F2007A2708B09200C5CECF /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		78F2007C2708B18300C5CECF /* Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
 		78F70CFF273582B9002453B3 /* QRCoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78F70D01273582BC002453B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -293,7 +291,6 @@
 				78EEFE8827076606008B2DA3 /* ButtonView.swift */,
 				78F2007C2708B18300C5CECF /* Snapshot.swift */,
 				78EEFE8D2707A3EA008B2DA3 /* HelperFunctions.swift */,
-				78F2007A2708B09200C5CECF /* ShareSheet.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -543,7 +540,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				78EEFE85270714F3008B2DA3 /* DetailView.swift in Sources */,
-				78F2007B2708B09200C5CECF /* ShareSheet.swift in Sources */,
 				78F2007D2708B18300C5CECF /* Snapshot.swift in Sources */,
 				78EEFE7D2706509D008B2DA3 /* QRData.swift in Sources */,
 				78EEFE8727075D71008B2DA3 /* EditView.swift in Sources */,

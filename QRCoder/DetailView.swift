@@ -15,8 +15,6 @@ struct DetailView: View {
     
     @State private var data: QRCode.Datas = QRCode.Datas()
     @State private var editViewIsPresented = false
-    @State private var shareSheetPresented = false
-    @State private var items: [Any] = []
     
     var watchConnection: WatchConnection
     
@@ -53,6 +51,10 @@ struct DetailView: View {
 
     }
     
+    private func makeImage() -> UIImage {
+        qrView.snapshot()
+    }
+    
     var body: some View {
         VStack {
             QRCodeView(qrString: qrData.qrString)
@@ -68,14 +70,22 @@ struct DetailView: View {
             }
             .padding(10)
             
+            
             ButtonView {
                 let qrImage = qrView.snapshot()
-                items.removeAll()
-                items.append(qrImage)
-                shareSheetPresented = true
+                let AV = UIActivityViewController(activityItems: [qrImage], applicationActivities: nil)
+                let scenes = UIApplication.shared.connectedScenes
+                let windowScene = scenes.first as? UIWindowScene
+                    
+                windowScene?.keyWindow?.rootViewController?.present(AV, animated: true, completion: nil)
+                
             } content: {
                 Label("Share", systemImage: "square.and.arrow.up")
             }
+            
+            
+            
+            
 
             ButtonView {
                 guard let index = myData.codes.firstIndex(where: { $0.id == qrData.id }) else {
@@ -114,9 +124,7 @@ struct DetailView: View {
                     })
             }
         }
-        .sheet(isPresented: $shareSheetPresented, content: {
-            ShareSheet(items: items)
-        })
+        
         
         
     }

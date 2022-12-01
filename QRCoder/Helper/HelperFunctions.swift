@@ -118,3 +118,4 @@ func stringFromQRData(codeData: QRCode.Datas) -> String {
     
 }
 
+
