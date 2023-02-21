@@ -369,6 +369,8 @@
 				78F70D19273582BD002453B3 /* PBXTargetDependency */,
 			);
 			name = QRCoder;
+			packageProductDependencies = (
+			);
 			productName = QRCoder;
 			productReference = 78EEFE6827064D47008B2DA3 /* QRCoder.app */;
 			productType = "com.apple.product-type.application";
@@ -477,6 +479,8 @@
 				Base,
 			);
 			mainGroup = 78EEFE5F27064D47008B2DA3;
+			packageReferences = (
+			);
 			productRefGroup = 78EEFE6927064D47008B2DA3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

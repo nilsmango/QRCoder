@@ -57,7 +57,7 @@ struct EditView: View {
                 return "MECARD:N:\(codeData.lastName),\(codeData.firstName);TEL:\(codeData.phoneNumber);EMAIL:\(codeData.email);;"
                 
             } else if codeData.complexContact {
-                if (codeData.address == "" && codeData.url == "http://") || (codeData.address == "" && codeData.url == "") {
+                if (codeData.address == "" && codeData.url == "https://") || (codeData.address == "" && codeData.url == "") {
                     return
                         """
                         BEGIN:VCARD
@@ -82,7 +82,7 @@ struct EditView: View {
                         END:VCARD
                         """
                     
-                } else if codeData.url == "http://" || codeData.url == ""  {
+                } else if codeData.url == "https://" || codeData.url == ""  {
                     return
                         """
                         BEGIN:VCARD

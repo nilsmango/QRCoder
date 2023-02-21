@@ -17,12 +17,15 @@ struct QRListView: View {
     @State private var newCodeData = QRCode.Datas()
     @State private var editMode: EditMode = .inactive
     @State private var presentOptions = false
+    @State private var appearedOnce = false
+    
+    @AppStorage("created") var qrCodesCreated = 0
     
     let saveAction: () -> Void
     
     var watchConnection = WatchConnection()
     
-    @State private var appearedOnce = false
+
     
     private func updateCompleteQRList() {
         print("Trying to send list")
@@ -52,13 +55,29 @@ struct QRListView: View {
     var body: some View {
         NavigationView {
             VStack {
-                
-                ButtonView {
-                    isPresented = true
-                } content: {
-                    Label("New QR Code", systemImage: "qrcode")
+                // TODO: add here "and not full version"
+                if myData.codes.count < 1 || UserDefaults.standard.bool(forKey: "*ID of IAP Product*") {
+                    ButtonView {
+                        isPresented = true
+                    } content: {
+                        Label("New QR Code", systemImage: "qrcode")
+                    }
+                    .padding()
+                } else {
+                    ButtonView {
+                        // open in app purchase
+                    } content: {
+                        Label("Get full version", systemImage: "qrcode")
+                    }
+                    .padding(.top)
+                    
+                    Text("The free version of QRCoder is limited to one QR code at a time. Buy the full version with unlimited QR codes for 1 $. \n→ Restore a purchase by tapping on the \"i\" in the top right corner.")
+                        .font(.footnote)
+                        .foregroundColor(Color.gray)
+                        .padding([.leading, .trailing], 60.0)
+                        .padding(.bottom)
                 }
-                .padding()
+                
                 
                 ZStack {
                     List {
@@ -101,7 +120,7 @@ struct QRListView: View {
             .environment(\.editMode, $editMode)
             .fullScreenCover(isPresented: $presentOptions, content: {
                 NavigationView {
-                    OptionView()
+                    OptionView(qrCodesCreated: qrCodesCreated)
                         .navigationTitle("Info")
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
@@ -128,6 +147,7 @@ struct QRListView: View {
                             
                             myData.codes.append(newCode)
                             
+                            qrCodesCreated += 1
                             // send the new qrCode to the apple watch
                             updateCompleteQRList()
                             
