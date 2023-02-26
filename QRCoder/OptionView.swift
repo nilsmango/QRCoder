@@ -33,6 +33,9 @@ struct OptionView: View {
             Section(header: Text("Statistics")) {
                 if qrCodesCreated == 69 {
                     Text("You have created 69 QR code. Nice! 👀")
+                } else if qrCodesCreated == 0 {
+                    Text("You have created no QR codes so far.")
+                
                 } else {
                     qrCodesCreated == 1 ? Text("You have created 1 QR code.") : Text("You have created \(qrCodesCreated) QR codes. Great job!")
                 }
@@ -40,7 +43,7 @@ struct OptionView: View {
             }
             
             
-            Section(header: Text("What about all my other questions?"), footer: Text("Changelog:\nVersion 1.0 - Made with ❤️ by [Nils Mango](https://nilsmango.ch), Switzerland and Tenerife, 2022.")) {
+            Section(header: Text("What about all my other questions?"), footer: Text("Changelog:\nVersion 1.0 - Made with ❤️ by [Nils Mango](https://nilsmango.ch) for project7III, Switzerland and Tenerife, 2022.")) {
                 
                 Link(destination: URL(string: "mailto:0@project7iii.com")!, label: { Label("Feedback / Email", systemImage: "envelope") })
                 

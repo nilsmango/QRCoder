@@ -54,7 +54,6 @@ class QRData: ObservableObject {
                 
             }
         }
-
     }
  
     func save() {

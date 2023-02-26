@@ -74,8 +74,8 @@ struct QRListView: View {
                     Text("The free version of QRCoder is limited to one QR code at a time. Buy the full version with unlimited QR codes for 1 $. \n→ Restore a purchase by tapping on the \"i\" in the top right corner.")
                         .font(.footnote)
                         .foregroundColor(Color.gray)
-                        .padding([.leading, .trailing], 60.0)
-                        .padding(.bottom)
+                        .padding([.leading, .trailing], 40.0)
+                        .padding([.bottom, .top])
                 }
                 
                 
@@ -140,7 +140,7 @@ struct QRListView: View {
                         .navigationBarItems(leading: Button(action: {
                             isPresented = false
                         }, label: {
-                            Text("Dismiss")
+                            Text("Cancel")
                         }), trailing: Button(action: {
                             isPresented = false
                             let newCode = QRCode(title: newCodeData.title, qrCodeType: newCodeData.qrCodeType, complexContact: newCodeData.complexContact,  hiddenNetwork: newCodeData.hiddenNetwork, text: newCodeData.text, firstName: newCodeData.firstName, lastName: newCodeData.lastName, email: newCodeData.email, phoneNumber: newCodeData.phoneNumber, workNumber: newCodeData.workNumber, address: newCodeData.address, url: newCodeData.url, network: newCodeData.network, password: newCodeData.password, encryptionType: newCodeData.encryptionType, qrImage: generateQRCode(from: stringFromQRData(codeData: newCodeData)).pngData())
