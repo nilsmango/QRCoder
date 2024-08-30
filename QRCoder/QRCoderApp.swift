@@ -23,7 +23,6 @@ struct QRCoderApp: App {
             }
             .onAppear() {
                 myData.load()
-                    
             }
         }
         

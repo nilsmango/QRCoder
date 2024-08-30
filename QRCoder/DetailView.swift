@@ -70,7 +70,6 @@ struct DetailView: View {
             }
             .padding(10)
             
-            
             ButtonView {
                 let qrImage = qrView.snapshot()
                 let AV = UIActivityViewController(activityItems: [qrImage], applicationActivities: nil)
@@ -83,10 +82,6 @@ struct DetailView: View {
                 Label("Share", systemImage: "square.and.arrow.up")
             }
             
-            
-            
-            
-
             ButtonView {
                 guard let index = myData.codes.firstIndex(where: { $0.id == qrData.id }) else {
                     fatalError("couldn't find the index for data")
@@ -98,6 +93,7 @@ struct DetailView: View {
                 
             } content: {
                 Label("Delete", systemImage: "trash")
+//                    .tint(.red)
 //                    .foregroundColor(.red)
             }
             .padding(10)
@@ -105,7 +101,6 @@ struct DetailView: View {
             Spacer()
 
         }
-        
         .navigationTitle(qrData.title)
         .fullScreenCover(isPresented: $editViewIsPresented) {
             NavigationView {

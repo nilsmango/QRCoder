@@ -25,7 +25,6 @@ struct QRListView: View {
     
     var watchConnection = WatchConnection()
     
-
     
     private func updateCompleteQRList() {
         print("Trying to send list")
@@ -46,10 +45,7 @@ struct QRListView: View {
                 watchConnection.session.transferUserInfo(codesDictionary)
                 
                 appearedOnce = true
-            
         }
-        
-        
     }
     
     var body: some View {
@@ -112,9 +108,11 @@ struct QRListView: View {
                     }
                 }
             }
-            .navigationTitle("QRCoder")
+            .navigationTitle("QR Coder")
             .toolbar {
-                EditButton()
+                if myData.codes.count > 0 {
+                    EditButton()
+                }
                 Button(action: { presentOptions = true }) { Label("Options", systemImage: "info.circle")}
             }
             .environment(\.editMode, $editMode)
@@ -181,7 +179,7 @@ struct QRListView: View {
             }
             .onAppear() {
                 if appearedOnce == false {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         updateCompleteQRList()
                     }
                 }

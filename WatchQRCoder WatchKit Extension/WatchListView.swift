@@ -15,22 +15,23 @@ struct WatchListView: View {
     @State private var appearedOnce = false
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                List {
-                    ForEach(phoneConnection.codes) { code in
-                        NavigationLink(destination: WatchDetailView(image: code.qrImage)) {
-                            Text(code.title)
-                                .accessibilityLabel("QR code title")
-                        }
-                    }
-                }
+            Group {
                 if phoneConnection.codes.isEmpty {
                     VStack {
                         Text("- Wow, such empty -")
                         Text("Open QRCoder on your iPhone and add QR Codes there to make them show up here.")
                     }
                     .foregroundColor(.secondary)
+                } else {
+                    List {
+                        ForEach(phoneConnection.codes) { code in
+                            NavigationLink(destination: WatchDetailView(image: code.qrImage)) {
+                                Text(code.title)
+                                    .accessibilityLabel("QR code title")
+                            }
+                        }
+                    }
+                    .padding()
                 }
             }
             .onAppear() {
@@ -39,10 +40,8 @@ struct WatchListView: View {
                     appearedOnce = true
                 }
             }
-            }
-            .navigationTitle("QRCoder")
-        
-    }
+            .navigationTitle("QR Coder")
+        }
 }
 
 struct WatchListView_Previews: PreviewProvider {

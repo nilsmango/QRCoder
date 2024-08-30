@@ -18,7 +18,7 @@ class QRData: ObservableObject {
 //                                                  create: false)
 //
 //            Oben alter weg, unten neue idee
-            let appIdentifier = "group.qrcoder.codes"
+            let appIdentifier = "group.qrcode"
             return FileManager.default.containerURL(
                 forSecurityApplicationGroupIdentifier: appIdentifier)!
             

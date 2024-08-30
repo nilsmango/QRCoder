@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.qrcode</string>
+		<string>group.qrcoder.codes</string>
 	</array>
 </dict>
 </plist>
