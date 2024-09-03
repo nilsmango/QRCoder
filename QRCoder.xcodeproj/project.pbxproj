@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7800801A2C87402900796EC1 /* product_ids.plist in Resources */ = {isa = PBXBuildFile; fileRef = 780080152C86F11400796EC1 /* product_ids.plist */; };
+		7800801C2C8783CC00796EC1 /* PurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7800801B2C8783CC00796EC1 /* PurchaseView.swift */; };
+		7800801E2C878C6700796EC1 /* RefundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7800801D2C878C6700796EC1 /* RefundView.swift */; };
 		7827667D29374DDD00E3F74D /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7827667C29374DDD00E3F74D /* OptionView.swift */; };
 		786B5024272AFACE0001CEDA /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEFE7927064D63008B2DA3 /* QRCode.swift */; };
 		786B5025272AFE230001CEDA /* QRCoderWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 78FD9004272ACC070094DA3A /* QRCoderWidget.intentdefinition */; };
@@ -16,6 +19,7 @@
 		78A41C2029353D440062D9D7 /* WatchConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A41C1B293534230062D9D7 /* WatchConnection.swift */; };
 		78A41C2129353D440062D9D7 /* WatchConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A41C1B293534230062D9D7 /* WatchConnection.swift */; };
 		78A41C23293542A90062D9D7 /* WatchCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A41C22293542A90062D9D7 /* WatchCode.swift */; };
+		78E556902C86ECCB00BAC587 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E5568F2C86ECCB00BAC587 /* StoreKit.framework */; };
 		78EEFE6C27064D47008B2DA3 /* QRCoderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEFE6B27064D47008B2DA3 /* QRCoderApp.swift */; };
 		78EEFE7027064D48008B2DA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78EEFE6F27064D48008B2DA3 /* Assets.xcassets */; };
 		78EEFE7327064D48008B2DA3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78EEFE7227064D48008B2DA3 /* Preview Assets.xcassets */; };
@@ -102,6 +106,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		780080152C86F11400796EC1 /* product_ids.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = product_ids.plist; sourceTree = "<group>"; };
+		780080192C86F29A00796EC1 /* StoreKitProducts.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = StoreKitProducts.storekit; sourceTree = "<group>"; };
+		7800801B2C8783CC00796EC1 /* PurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseView.swift; sourceTree = "<group>"; };
+		7800801D2C878C6700796EC1 /* RefundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundView.swift; sourceTree = "<group>"; };
 		7827667C29374DDD00E3F74D /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		786F2EED2936931100F5AD4C /* ExtensionUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUserDefaults.swift; sourceTree = "<group>"; };
 		788005DF270D9CF400FFB113 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -115,6 +123,7 @@
 		78E28F85270EEE000064D546 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		78E28F8B270EF3920064D546 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		78E28F96270EF3920064D546 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
+		78E5568F2C86ECCB00BAC587 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		78EEFE6827064D47008B2DA3 /* QRCoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78EEFE6B27064D47008B2DA3 /* QRCoderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCoderApp.swift; sourceTree = "<group>"; };
 		78EEFE6F27064D48008B2DA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -152,6 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78E556902C86ECCB00BAC587 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +195,7 @@
 		788005DE270D9CF400FFB113 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				78E5568F2C86ECCB00BAC587 /* StoreKit.framework */,
 				788005DF270D9CF400FFB113 /* WidgetKit.framework */,
 				788005E1270D9CF400FFB113 /* SwiftUI.framework */,
 				78E28F8B270EF3920064D546 /* Intents.framework */,
@@ -231,13 +242,17 @@
 			isa = PBXGroup;
 			children = (
 				78CBA5242731C3EF00710496 /* QRCoder.entitlements */,
+				780080152C86F11400796EC1 /* product_ids.plist */,
+				780080192C86F29A00796EC1 /* StoreKitProducts.storekit */,
 				78E28F85270EEE000064D546 /* Info.plist */,
 				78EEFE6B27064D47008B2DA3 /* QRCoderApp.swift */,
 				78EEFE82270710FD008B2DA3 /* QRListView.swift */,
+				7800801B2C8783CC00796EC1 /* PurchaseView.swift */,
 				78EEFE84270714F3008B2DA3 /* DetailView.swift */,
 				78EEFE8627075D71008B2DA3 /* EditView.swift */,
 				78EEFE8B2707A327008B2DA3 /* QRCodeView.swift */,
 				7827667C29374DDD00E3F74D /* OptionView.swift */,
+				7800801D2C878C6700796EC1 /* RefundView.swift */,
 				78EEFE8A27076BDE008B2DA3 /* Helper */,
 				78EEFE7B27064D67008B2DA3 /* Model */,
 				78EEFE6F27064D48008B2DA3 /* Assets.xcassets */,
@@ -459,6 +474,7 @@
 			files = (
 				78EEFE7327064D48008B2DA3 /* Preview Assets.xcassets in Resources */,
 				78EEFE7027064D48008B2DA3 /* Assets.xcassets in Resources */,
+				7800801A2C87402900796EC1 /* product_ids.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,9 +516,11 @@
 				78EEFE8727075D71008B2DA3 /* EditView.swift in Sources */,
 				78EEFE83270710FD008B2DA3 /* QRListView.swift in Sources */,
 				78EEFE8C2707A327008B2DA3 /* QRCodeView.swift in Sources */,
+				7800801E2C878C6700796EC1 /* RefundView.swift in Sources */,
 				78A41C1C293534230062D9D7 /* WatchConnection.swift in Sources */,
 				7827667D29374DDD00E3F74D /* OptionView.swift in Sources */,
 				78EEFE6C27064D47008B2DA3 /* QRCoderApp.swift in Sources */,
+				7800801C2C8783CC00796EC1 /* PurchaseView.swift in Sources */,
 				78EEFE8E2707A3EA008B2DA3 /* HelperFunctions.swift in Sources */,
 				78EEFE7A27064D63008B2DA3 /* QRCode.swift in Sources */,
 				78EEFE8927076606008B2DA3 /* ButtonView.swift in Sources */,
@@ -621,7 +639,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -677,7 +695,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -707,7 +725,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -741,7 +759,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

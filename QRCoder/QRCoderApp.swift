@@ -23,6 +23,9 @@ struct QRCoderApp: App {
             }
             .onAppear() {
                 myData.load()
+                Task {
+                    await myData.updateCustomerProductStatus()
+                }
             }
         }
         

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct QRListView: View {
     
@@ -18,6 +19,9 @@ struct QRListView: View {
     @State private var editMode: EditMode = .inactive
     @State private var presentOptions = false
     @State private var appearedOnce = false
+    @State private var isShowingError = false
+    @State private var errorTitle = ""
+    @State private var showCodeSheet = false
     
     @AppStorage("created") var qrCodesCreated = 0
     
@@ -25,6 +29,7 @@ struct QRListView: View {
     
     var watchConnection = WatchConnection()
     
+    @State private var wasPurchased = false
     
     private func updateCompleteQRList() {
         print("Trying to send list")
@@ -51,8 +56,8 @@ struct QRListView: View {
     var body: some View {
         NavigationView {
             VStack {
-                // TODO: add here "and not full version"
-                if myData.codes.count < 1 || UserDefaults.standard.bool(forKey: "*ID of IAP Product*") {
+                // TODO: add here "or has purchased full version"
+                if myData.codes.count < 1 || wasPurchased || myData.hasPurchasedPremium {
                     ButtonView {
                         isPresented = true
                     } content: {
@@ -60,18 +65,34 @@ struct QRListView: View {
                     }
                     .padding()
                 } else {
+                    if let premium = myData.premiumProducts.first(where: { $0.id == "com.project7III.qr.full"}) {
                     ButtonView {
-                        // open in app purchase
+                        Task {
+                            await buy(product: premium)
+                        }
                     } content: {
-                        Label("Get full version", systemImage: "qrcode")
+                        Label("Get full Version", systemImage: "qrcode")
                     }
                     .padding(.top)
                     
-                    Text("The free version of QRCoder is limited to one QR code at a time. Buy the full version with unlimited QR codes for 1 $. \n→ Restore a purchase by tapping on the \"i\" in the top right corner.")
-                        .font(.footnote)
-                        .foregroundColor(Color.gray)
-                        .padding([.leading, .trailing], 40.0)
-                        .padding([.bottom, .top])
+                        Text("The free version of QRCoder is limited to one QR code at a time. Edit or remove your QR code below or get the full version with unlimited QR codes for only \(premium.displayPrice).")
+                            .font(.footnote)
+                            .foregroundColor(Color.gray)
+                            .padding([.leading, .trailing], 40.0)
+                            .padding([.bottom, .top])
+                        
+                        Button {
+                            showCodeSheet = true
+                        } label: {
+                            Text("Redeem Code")
+                                .fontWeight(.semibold)
+                                .font(.footnote)
+                        }
+                        .padding(.bottom)
+                        
+                    } else {
+                        Text("Could not load available upgrades, please try again when connected to the internet.\nThe free version of QRCoder is limited to one QR code at a time. Edit or remove your QR code below.")
+                    }
                 }
                 
                 
@@ -118,8 +139,8 @@ struct QRListView: View {
             .environment(\.editMode, $editMode)
             .fullScreenCover(isPresented: $presentOptions, content: {
                 NavigationView {
-                    OptionView(qrCodesCreated: qrCodesCreated)
-                        .navigationTitle("Info")
+                    OptionView(myData: myData, qrCodesCreated: qrCodesCreated)
+                        .navigationTitle("Info & Help")
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button("Dismiss") {
@@ -128,9 +149,7 @@ struct QRListView: View {
                             }
                         }
                 }
-            }
-            
-            )
+            })
             .fullScreenCover(isPresented: $isPresented, content: {
                 NavigationView {
                     EditView(codeData: $newCodeData)
@@ -172,6 +191,20 @@ struct QRListView: View {
                         }))
                 }
             })
+            .alert(isPresented: $isShowingError, content: {
+                Alert(title: Text(errorTitle), message: nil, dismissButton: .default(Text("Okay")))
+            })
+            
+            .offerCodeRedemption(isPresented: $showCodeSheet, onCompletion: { result in
+                switch result {
+                case .success:
+                    if myData.hasPurchasedPremium {
+                        wasPurchased = true
+                    }
+                case .failure(let error):
+                    print("Code redemption failed: \(error.localizedDescription)")
+                }
+            })
             .onChange(of: scenePhase) { phase in
                 if phase == .inactive {
                     saveAction()
@@ -185,6 +218,19 @@ struct QRListView: View {
                 }
                 
             }
+        }
+    }
+    
+    func buy(product: Product) async {
+        do {
+            if try await myData.purchase(product: product) != nil {
+                wasPurchased = true
+            }
+        } catch StoreError.failedVerification {
+            errorTitle = "Your purchase could not be verified by the App Store."
+            isShowingError = true
+        } catch {
+            print("Failed purchase for \(product.id). \(error)")
         }
     }
 }
