@@ -23,7 +23,7 @@ struct OptionView: View {
                     Text("You have created no QR codes so far.")
                     
                 } else {
-                    qrCodesCreated == 1 ? Text("You have created 1 QR code.") : Text("You have created \(qrCodesCreated) QR codes. Great job!")
+                    qrCodesCreated == 1 ? Text("You have created 1 QR code. 😮") : Text("You have created \(qrCodesCreated) QR codes. Great job! 🎉")
                 }
                 
             }
