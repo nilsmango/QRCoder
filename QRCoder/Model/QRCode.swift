@@ -51,7 +51,7 @@ struct QRCode: Identifiable, Codable, Equatable {
                 return "MECARD:N:\(lastName),\(firstName);TEL:\(phoneNumber);EMAIL:\(email);;"
                 
             } else if complexContact {
-                if (address == "" && url == "http://") || (address == "" && url == "") {
+                if (address == "" && url == "https://") || (address == "" && url == "") {
                     return
                         """
                         BEGIN:VCARD
@@ -76,7 +76,7 @@ struct QRCode: Identifiable, Codable, Equatable {
                         END:VCARD
                         """
                     
-                } else if url == "http://" || url == ""  {
+                } else if url == "https://" || url == ""  {
                     return
                         """
                         BEGIN:VCARD
@@ -142,7 +142,7 @@ extension QRCode {
         [
             QRCode(title: "Your QR Code", qrCodeType: "Text", complexContact: false, hiddenNetwork: false, text: "This is your QR Code", firstName: "", lastName: "", email: "", phoneNumber: "", workNumber: "", address: "", url: "", network: "", password: "", encryptionType: "None", qrImage: nil),
             QRCode(title: "My Simple Contact", qrCodeType: "Contact", complexContact: false, hiddenNetwork: false, text: "", firstName: "Maxi", lastName: "Mustermann", email: "max@muster.com", phoneNumber: "07777777", workNumber: "", address: "", url: "", network: "", password: "", encryptionType: "None", qrImage: nil),
-            QRCode(title: "My Complex Contact", qrCodeType: "Contact", complexContact: true, hiddenNetwork: false, text: "", firstName: "Miri", lastName: "Muster", email: "miri@muster.ch", phoneNumber: "0238283291", workNumber: "0382822991", address: "Im Musterwald 12, 4058 Basel", url: "http://musterfrau.ch", network: "", password: "", encryptionType: "None", qrImage: nil),
+            QRCode(title: "My Complex Contact", qrCodeType: "Contact", complexContact: true, hiddenNetwork: false, text: "", firstName: "Miri", lastName: "Muster", email: "miri@muster.ch", phoneNumber: "0238283291", workNumber: "0382822991", address: "Im Musterwald 12, 4058 Basel", url: "https://musterfrau.ch", network: "", password: "", encryptionType: "None", qrImage: nil),
             QRCode(title: "My Email", qrCodeType: "Email", complexContact: false, hiddenNetwork: false, text: "", firstName: "", lastName: "", email: "meine@email.com", phoneNumber: "", workNumber: "", address: "", url: "", network: "", password: "", encryptionType: "None", qrImage: nil)
         ]
     }
@@ -236,7 +236,7 @@ extension QRCode {
                 return "MECARD:N:\(codeData.lastName),\(codeData.firstName);TEL:\(codeData.phoneNumber);EMAIL:\(codeData.email);;"
                 
             } else if codeData.complexContact {
-                if (codeData.address == "" && codeData.url == "http://") || (codeData.address == "" && codeData.url == "") {
+                if (codeData.address == "" && codeData.url == "https://") || (codeData.address == "" && codeData.url == "") {
                     return
                         """
                         BEGIN:VCARD
@@ -261,7 +261,7 @@ extension QRCode {
                         END:VCARD
                         """
                     
-                } else if codeData.url == "http://" || codeData.url == ""  {
+                } else if codeData.url == "https://" || codeData.url == ""  {
                     return
                         """
                         BEGIN:VCARD
