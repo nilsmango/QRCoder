@@ -13,6 +13,7 @@ struct QRListView: View {
     @ObservedObject var myData: QRData
     
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.requestReview) private var requestReview
     
     @State private var isPresented = false
     @State private var newCodeData = QRCode.Datas()
@@ -199,6 +200,12 @@ struct QRListView: View {
                                 newCodeData.network = ""
                                 newCodeData.password = ""
                                 newCodeData.encryptionType = "WPA/WPA2"
+                                
+                                if qrCodesCreated % 1 == 0 {
+                                    if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
+                                        SKStoreReviewController.requestReview(in: scene)
+                                    }
+                                }
                             }
                         }, label: {
                             Text("Save")
