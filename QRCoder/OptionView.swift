@@ -56,11 +56,11 @@ struct OptionView: View {
                 
                 
                 
-                Link(destination: URL(string: "https://project7iii.com/qrcoder/privacy-policy/")!) {
+                Link(destination: URL(string: "https://project7iii.com/qr/privacy-policy/")!) {
                     Label("Privacy Policy", systemImage: "lock.fill")
                 }
                 
-                Link(destination: URL(string: "https://project7iii.com/qrcoder/terms-and-conditions/")!) {
+                Link(destination: URL(string: "https://project7iii.com/qr/terms-and-conditions/")!) {
                     Label("Terms and Conditions", systemImage: "doc.text.fill")
                 }
                 

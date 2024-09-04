@@ -36,7 +36,7 @@
 		78F70D11273582BC002453B3 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F70D10273582BC002453B3 /* ComplicationController.swift */; };
 		78F70D13273582BD002453B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78F70D12273582BD002453B3 /* Assets.xcassets */; };
 		78F70D16273582BD002453B3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78F70D15273582BD002453B3 /* Preview Assets.xcassets */; };
-		78F70D1A273582BD002453B3 /* QRCoder.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 78F70CFF273582B9002453B3 /* QRCoder.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		78F70D1A273582BD002453B3 /* 7III QR.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 78F70CFF273582B9002453B3 /* 7III QR.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		78FC969429BD292B00C7D704 /* WatchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F70D0C273582BC002453B3 /* WatchListView.swift */; };
 		78FC969529BD292B00C7D704 /* QRCoderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F70D0E273582BC002453B3 /* QRCoderApp.swift */; };
 		78FC969629BD292B00C7D704 /* WatchDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F70D2427358609002453B3 /* WatchDetailView.swift */; };
@@ -98,7 +98,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				78F70D1A273582BD002453B3 /* QRCoder.app in Embed Watch Content */,
+				78F70D1A273582BD002453B3 /* 7III QR.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,7 +137,7 @@
 		78EEFE8B2707A327008B2DA3 /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
 		78EEFE8D2707A3EA008B2DA3 /* HelperFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		78F2007C2708B18300C5CECF /* Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
-		78F70CFF273582B9002453B3 /* QRCoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		78F70CFF273582B9002453B3 /* 7III QR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "7III QR.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78F70D01273582BC002453B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78F70D0C273582BC002453B3 /* WatchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListView.swift; sourceTree = "<group>"; };
 		78F70D0E273582BC002453B3 /* QRCoderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCoderApp.swift; sourceTree = "<group>"; };
@@ -233,7 +233,7 @@
 				78EEFE6827064D47008B2DA3 /* QRCoder.app */,
 				78FD8FFE272ACC070094DA3A /* QRCoderWidgetExtension.appex */,
 				78FD9017272AF6740094DA3A /* QRCoderWidgetIntentHandler.appex */,
-				78F70CFF273582B9002453B3 /* QRCoder.app */,
+				78F70CFF273582B9002453B3 /* 7III QR.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -383,7 +383,7 @@
 			);
 			name = WatchQRCoder;
 			productName = WatchQRCoder;
-			productReference = 78F70CFF273582B9002453B3 /* QRCoder.app */;
+			productReference = 78F70CFF273582B9002453B3 /* 7III QR.app */;
 			productType = "com.apple.product-type.application";
 		};
 		78FD8FFD272ACC070094DA3A /* QRCoderWidgetExtension */ = {
@@ -719,7 +719,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRCoder/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "7III QR Coder";
+				INFOPLIST_KEY_CFBundleDisplayName = "7III QR";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This is needed in order to save your QR Codes in Photos.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -733,9 +733,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.project7III.qr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -753,7 +756,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRCoder/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "7III QR Coder";
+				INFOPLIST_KEY_CFBundleDisplayName = "7III QR";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This is needed in order to save your QR Codes in Photos.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -767,9 +770,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.project7III.qr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -784,7 +790,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A9H57996U3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = QRCoder.ComplicationController;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.project7III.qr;
@@ -794,7 +800,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.project7III.qr.watchkitapp;
-				PRODUCT_NAME = QRCoder;
+				PRODUCT_NAME = "7III QR";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -815,7 +821,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A9H57996U3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = QRCoder.ComplicationController;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.project7III.qr;
@@ -825,7 +831,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.project7III.qr.watchkitapp;
-				PRODUCT_NAME = QRCoder;
+				PRODUCT_NAME = "7III QR";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;

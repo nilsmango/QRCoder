@@ -60,7 +60,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "78F70CFE273582B9002453B3"
-            BuildableName = "QRCoder.app"
+            BuildableName = "7III QR.app"
             BlueprintName = "WatchQRCoder"
             ReferencedContainer = "container:QRCoder.xcodeproj">
          </BuildableReference>
@@ -78,7 +78,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "78F70CFE273582B9002453B3"
-            BuildableName = "QRCoder.app"
+            BuildableName = "7III QR.app"
             BlueprintName = "WatchQRCoder"
             ReferencedContainer = "container:QRCoder.xcodeproj">
          </BuildableReference>

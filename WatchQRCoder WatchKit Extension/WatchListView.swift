@@ -40,7 +40,7 @@ struct WatchListView: View {
                     appearedOnce = true
                 }
             }
-            .navigationTitle("QR Coder")
+            .navigationTitle("7III QR")
         }
 }
 
