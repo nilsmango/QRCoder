@@ -107,6 +107,7 @@ struct DetailView: View {
                         myData.codes.remove(at: index)
                         isDeleted = true
                         presentationMode.wrappedValue.dismiss()
+                        myData.save()
                         updateWatchList()
                         
                     } content: {
@@ -133,7 +134,7 @@ struct DetailView: View {
                             fatalError("couldn't find the index for data")
                         }
                         myData.codes[index].update(from: data)
-                        
+                        myData.save()
                         updateWatchList()
                     })
             }

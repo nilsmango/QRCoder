@@ -25,9 +25,7 @@ struct QRListView: View {
     @State private var columnVisibility: NavigationSplitViewVisibility = .all
     
     @AppStorage("created") var qrCodesCreated = 0
-    
-    let saveAction: () -> Void
-    
+        
     var watchConnection = WatchConnection()
     
     @State private var wasPurchased = false
@@ -110,10 +108,12 @@ struct QRListView: View {
                         }
                         .onDelete { indexSet in
                             myData.delete(at: indexSet)
+                            myData.save()
                             updateCompleteQRList()
                         }
                         .onMove { indexSet, newPlace in
                             myData.move(from: indexSet, to: newPlace)
+                            myData.save()
                         }
                         
                     }
@@ -165,6 +165,7 @@ struct QRListView: View {
                             myData.codes.append(newCode)
                             
                             qrCodesCreated += 1
+                            myData.save()
                             // send the new qrCode to the apple watch
                             updateCompleteQRList()
                             
@@ -206,11 +207,6 @@ struct QRListView: View {
                 }
             })
             
-            .onChange(of: scenePhase) { phase in
-                if phase == .inactive {
-                    saveAction()
-                }
-            }
             .onAppear() {
                 if appearedOnce == false {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -241,9 +237,9 @@ struct QRListView: View {
 
 struct QRListView_Previews: PreviewProvider {
     static var previews: some View {
-        QRListView(myData: QRData(), saveAction: {})
+        QRListView(myData: QRData())
         
-        QRListView(myData: QRData(), saveAction: {})
+        QRListView(myData: QRData())
             .preferredColorScheme(.dark)
     }
     

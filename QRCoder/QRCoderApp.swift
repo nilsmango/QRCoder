@@ -16,11 +16,7 @@ struct QRCoderApp: App {
         
     var body: some Scene {
         WindowGroup {
-            QRListView(myData: myData) {
-                // this gets called in the ContentView saveAction closure.
-                myData.save()
-
-            }
+            QRListView(myData: myData)
             .onAppear() {
                 myData.load()
                 Task {
