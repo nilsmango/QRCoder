@@ -854,7 +854,7 @@
 				DEVELOPMENT_TEAM = A9H57996U3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRCoderWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = QRCoderWidget;
+				INFOPLIST_KEY_CFBundleDisplayName = "7III QR Widget";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -885,7 +885,7 @@
 				DEVELOPMENT_TEAM = A9H57996U3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRCoderWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = QRCoderWidget;
+				INFOPLIST_KEY_CFBundleDisplayName = "7III QR Widget";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -914,7 +914,7 @@
 				DEVELOPMENT_TEAM = A9H57996U3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRCoderWidgetIntentHandler/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = QRCoderWidgetIntentHandler;
+				INFOPLIST_KEY_CFBundleDisplayName = "7III QR Widget";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -943,7 +943,7 @@
 				DEVELOPMENT_TEAM = A9H57996U3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRCoderWidgetIntentHandler/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = QRCoderWidgetIntentHandler;
+				INFOPLIST_KEY_CFBundleDisplayName = "7III QR Widget";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
