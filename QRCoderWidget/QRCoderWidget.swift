@@ -12,7 +12,7 @@ import Intents
 struct Provider: IntentTimelineProvider {
     private static var documentsFolder: URL {
         
-        let appIdentifier = "group.qrcoder.codes"
+        let appIdentifier = "group.qrcode"
         
         return FileManager.default.containerURL(
             forSecurityApplicationGroupIdentifier: appIdentifier)!
