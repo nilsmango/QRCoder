@@ -23,6 +23,7 @@ struct QRListView: View {
     @State private var errorTitle = ""
     @State private var showCodeSheet = false
     @State private var columnVisibility: NavigationSplitViewVisibility = .all
+    @State private var selectedID: String?
     
     @AppStorage("created") var qrCodesCreated = 0
         
@@ -97,12 +98,20 @@ struct QRListView: View {
                 ZStack {
                     List {
                         ForEach(myData.codes) { qrData in
-                            NavigationLink(destination: DetailView(myData: myData, qrData: qrData, watchConnection: watchConnection)) {
+                            NavigationLink(
+                                destination: DetailView(myData: myData, qrData: qrData, watchConnection: watchConnection),
+                                tag: qrData.id,
+                                selection: $selectedID) {
                                 VStack {
                                     QRCodeView(qrString: qrData.qrString).accessibilityLabel("QR code")
                                     Text(qrData.title)
                                         .accessibilityLabel("QR code title")
                                         .font(.subheadline)
+                                        .foregroundStyle(
+                                            UIDevice.current.userInterfaceIdiom == .pad
+                                            ? (selectedID == qrData.id ? Color("InvertedPrimary") : .primary)
+                                            : .primary
+                                        )
                                 }
                             }
                         }
