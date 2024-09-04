@@ -9,7 +9,7 @@ import Foundation
 import CoreImage.CIFilterBuiltins
 import SwiftUI
 
-struct QRCode: Identifiable, Codable {
+struct QRCode: Identifiable, Codable, Equatable {
     var title: String
     var qrCodeType: String
     var complexContact: Bool

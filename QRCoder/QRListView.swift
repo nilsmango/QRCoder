@@ -22,6 +22,7 @@ struct QRListView: View {
     @State private var isShowingError = false
     @State private var errorTitle = ""
     @State private var showCodeSheet = false
+    @State private var columnVisibility: NavigationSplitViewVisibility = .all
     
     @AppStorage("created") var qrCodesCreated = 0
     
@@ -54,7 +55,7 @@ struct QRListView: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationSplitView(columnVisibility: $columnVisibility) {
             VStack {
                 // TODO: add here "or has purchased full version"
                 if myData.codes.count < 1 || wasPurchased || myData.hasPurchasedPremium {
@@ -66,27 +67,27 @@ struct QRListView: View {
                     .padding()
                 } else {
                     if let premium = myData.premiumProducts.first(where: { $0.id == "com.project7III.qr.full"}) {
-                    ButtonView {
-                        Task {
-                            await buy(product: premium)
-                        }
-                    } content: {
-                        Label("Get full Version", systemImage: "qrcode")
-                    }
-                    .padding(.top)
-                    
-                        Text("The free version of QRCoder is limited to one QR code at a time. Edit or remove your QR code below or get the full version with unlimited QR codes for only \(premium.displayPrice).")
-                            .font(.footnote)
-                            .foregroundColor(Color.gray)
+
+                        Text("The free version of QRCoder is limited to one QR code at a time.\nEdit or remove your QR code below or unlock the full version with **unlimited QR codes for only \(premium.displayPrice)**.")
+                            .foregroundColor(.primary.opacity(0.9))
                             .padding([.leading, .trailing], 40.0)
-                            .padding([.bottom, .top])
+                            .padding(.top)
+                        
+                        ButtonView {
+                            Task {
+                                await buy(product: premium)
+                            }
+                        } content: {
+                            Label("Get Full Version", systemImage: "qrcode")
+                        }
+                        .padding([.bottom, .top])
                         
                         Button {
                             showCodeSheet = true
                         } label: {
                             Text("Redeem Code")
                                 .fontWeight(.semibold)
-                                .font(.footnote)
+                                .font(.callout)
                         }
                         .padding(.bottom)
                         
@@ -94,7 +95,6 @@ struct QRListView: View {
                         Text("Could not load available upgrades, please try again when connected to the internet.\nThe free version of QRCoder is limited to one QR code at a time. Edit or remove your QR code below.")
                     }
                 }
-                
                 
                 ZStack {
                     List {
@@ -129,7 +129,7 @@ struct QRListView: View {
                     }
                 }
             }
-            .navigationTitle("QR Coder")
+            .navigationTitle("7III QR")
             .toolbar {
                 if myData.codes.count > 0 {
                     EditButton()
@@ -205,6 +205,7 @@ struct QRListView: View {
                     print("Code redemption failed: \(error.localizedDescription)")
                 }
             })
+            
             .onChange(of: scenePhase) { phase in
                 if phase == .inactive {
                     saveAction()
@@ -218,7 +219,10 @@ struct QRListView: View {
                 }
                 
             }
+        } detail: {
+            
         }
+        .navigationSplitViewStyle(.automatic)
     }
     
     func buy(product: Product) async {

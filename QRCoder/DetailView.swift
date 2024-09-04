@@ -10,11 +10,13 @@ import SwiftUI
 struct DetailView: View {
     
     @ObservedObject var myData: QRData
-    
+    @Environment(\.presentationMode) var presentationMode
+
     var qrData: QRCode
     
     @State private var data: QRCode.Datas = QRCode.Datas()
     @State private var editViewIsPresented = false
+    @State private var isDeleted = false
     
     var watchConnection: WatchConnection
     
@@ -56,50 +58,67 @@ struct DetailView: View {
     }
     
     var body: some View {
-        VStack {
-            QRCodeView(qrString: qrData.qrString)
-                .accessibilityLabel("QR code")
-                .padding(10)
-            Spacer()
-            
-            ButtonView {
-                editViewIsPresented = true
-                data = qrData.data
-            } content: {
-                Label("Edit", systemImage: "square.and.pencil")
-            }
-            .padding(10)
-            
-            ButtonView {
-                let qrImage = qrView.snapshot()
-                let AV = UIActivityViewController(activityItems: [qrImage], applicationActivities: nil)
-                let scenes = UIApplication.shared.connectedScenes
-                let windowScene = scenes.first as? UIWindowScene
+        Group {
+            if isDeleted {
+                EmptyView()
+                    .onChange(of: qrData) { oldValue, newValue in
+                        isDeleted = false
+                    }
+            } else {
+                VStack {
+                    QRCodeView(qrString: qrData.qrString)
+                        .accessibilityLabel("QR code")
+                        .padding(10)
+                    Spacer()
                     
-                windowScene?.keyWindow?.rootViewController?.present(AV, animated: true, completion: nil)
-                
-            } content: {
-                Label("Share", systemImage: "square.and.arrow.up")
-            }
-            
-            ButtonView {
-                guard let index = myData.codes.firstIndex(where: { $0.id == qrData.id }) else {
-                    fatalError("couldn't find the index for data")
+                    ButtonView {
+                        editViewIsPresented = true
+                        data = qrData.data
+                    } content: {
+                        Label("Edit", systemImage: "square.and.pencil")
+                    }
+                    .padding(10)
+                    
+                    ButtonView {
+                        let qrImage = qrView.snapshot()
+                        let AV = UIActivityViewController(activityItems: [qrImage], applicationActivities: nil)
+                        
+                        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                           let window = windowScene.windows.first,
+                           let rootViewController = window.rootViewController {
+                            
+                            // This is crucial for iPad support
+                            if let popoverController = AV.popoverPresentationController {
+                                popoverController.sourceView = rootViewController.view
+                                popoverController.sourceRect = CGRect(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY, width: 0, height: 0)
+                                popoverController.permittedArrowDirections = []
+                            }
+                            
+                            rootViewController.present(AV, animated: true, completion: nil)
+                        }
+                    } content: {
+                        Label("Share", systemImage: "square.and.arrow.up")
+                    }
+                    ButtonView {
+                        guard let index = myData.codes.firstIndex(where: { $0.id == qrData.id }) else {
+                            fatalError("couldn't find the index for data")
+                        }
+                        
+                        myData.codes.remove(at: index)
+                        isDeleted = true
+                        presentationMode.wrappedValue.dismiss()
+                        updateWatchList()
+                        
+                    } content: {
+                        Label("Delete", systemImage: "trash")
+                        //                    .tint(.red)
+                        //                    .foregroundColor(.red)
+                    }
+                    .padding(10)
+                    
+                    Spacer()
                 }
-
-                myData.codes.remove(at: index)
-                
-                updateWatchList()
-                
-            } content: {
-                Label("Delete", systemImage: "trash")
-//                    .tint(.red)
-//                    .foregroundColor(.red)
             }
-            .padding(10)
-            
-            Spacer()
-
         }
         .navigationTitle(qrData.title)
         .fullScreenCover(isPresented: $editViewIsPresented) {
@@ -119,9 +138,6 @@ struct DetailView: View {
                     })
             }
         }
-        
-        
-        
     }
 }
 
