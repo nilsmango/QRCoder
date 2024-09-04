@@ -73,6 +73,8 @@ struct PlaceholderView: View {
 
 struct QRCoderWidgetEntryView : View {
     @Environment(\.widgetFamily) var family: WidgetFamily
+    @Environment(\.widgetRenderingMode) var renderingMode
+
     var entry: Provider.Entry
     
     var body: some View {
@@ -88,49 +90,108 @@ struct QRCoderWidgetEntryView : View {
     
     var qrCodeViewSmall: some View {
         ZStack {
-            Rectangle()
-                .fill(.white)
-            VStack(alignment: .center, spacing: 4) {
-                
-                Image(uiImage: generateQRCode(from: entry.qrCode.qrString))
-                    .interpolation(.none)
-                    .resizable()
-                    .scaledToFit()
-                
-                if entry.configuration.showTitle == true {
-                    Text(entry.qrCode.title)
-                        .font(.caption2)
-                        .lineLimit(1)
-                        .foregroundColor(.black)
+            switch renderingMode {
+            case .accented:
+                ZStack {
+                    Rectangle()
+                        .fill(.white)
+                        .clipShape(ContainerRelativeShape())
                     
+                    VStack(alignment: .center, spacing: 4) {
+                        Image(uiImage: generateQRCode(from: entry.qrCode.qrString))
+                            .interpolation(.none)
+                            .resizable()
+                            .scaledToFit()
+                        
+                        if entry.configuration.showTitle == true {
+                            Text(entry.qrCode.title)
+                                .font(.caption2)
+                                .lineLimit(1)
+                                .foregroundColor(.black)
+                                .widgetAccentable()
+                        }
+                    }
+                    .padding(10)
+                }
+                
+            default:
+                ZStack {
+                    Rectangle()
+                        .fill(.white)
+                        .clipShape(ContainerRelativeShape())
+                    
+                    VStack(alignment: .center, spacing: 4) {
+                        Image(uiImage: generateQRCode(from: entry.qrCode.qrString))
+                            .interpolation(.none)
+                            .resizable()
+                            .scaledToFit()
+                        
+                        if entry.configuration.showTitle == true {
+                            Text(entry.qrCode.title)
+                                .font(.caption2)
+                                .lineLimit(1)
+                                .foregroundColor(.black)
+                            
+                        }
+                    }
+                    .padding(10)
                 }
             }
-            .padding(10)
         }
-        
-        
     }
     
     var qrCodeViewBig: some View {
         ZStack {
-            Rectangle()
-                .fill(.white)
-            VStack(alignment: .center, spacing: 2) {
+            switch renderingMode {
+            case .accented:
+                ZStack {
+                    Rectangle()
+                        .fill(.white)
+                        .clipShape(ContainerRelativeShape())
+                    
+                    VStack(alignment: .center, spacing: 2) {
+                        Image(uiImage: generateQRCode(from: entry.qrCode.qrString))
+                            .interpolation(.none)
+                            .resizable()
+                            .scaledToFit()
+                        
+                        if entry.configuration.showTitle == true {
+                            Text(entry.qrCode.title)
+                                .font(.subheadline)
+                                .lineLimit(1)
+                                .foregroundColor(.black)
+                                .widgetAccentable()
+                        }
+                    }
+                    .padding(12)
+                }
                 
-                Image(uiImage: generateQRCode(from: entry.qrCode.qrString))
-                    .interpolation(.none)
-                    .resizable()
-                    .scaledToFit()
-                
-                if entry.configuration.showTitle == true {
-                    Text(entry.qrCode.title)
-                        .font(.subheadline)
-                        .lineLimit(1)
-                        .foregroundColor(.black)
+            default:
+                ZStack {
+                    Rectangle()
+                        .fill(.white)
+                        .clipShape(ContainerRelativeShape())
+                    
+                    VStack(alignment: .center, spacing: 2) {
+                        Image(uiImage: generateQRCode(from: entry.qrCode.qrString))
+                            .interpolation(.none)
+                            .resizable()
+                            .scaledToFit()
+                        
+                        if entry.configuration.showTitle == true {
+                            Text(entry.qrCode.title)
+                                .font(.subheadline)
+                                .lineLimit(1)
+                                .foregroundColor(.black)
+                        }
+                    }
+                    .padding(12)
                 }
             }
-            .padding(12)
         }
+        
+        
+        
     }
 }
 
