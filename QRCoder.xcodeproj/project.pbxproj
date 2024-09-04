@@ -110,6 +110,7 @@
 		780080192C86F29A00796EC1 /* StoreKitProducts.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = StoreKitProducts.storekit; sourceTree = "<group>"; };
 		7800801B2C8783CC00796EC1 /* PurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseView.swift; sourceTree = "<group>"; };
 		7800801D2C878C6700796EC1 /* RefundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundView.swift; sourceTree = "<group>"; };
+		7800801F2C884BEE00796EC1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7827667C29374DDD00E3F74D /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		786F2EED2936931100F5AD4C /* ExtensionUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUserDefaults.swift; sourceTree = "<group>"; };
 		788005DF270D9CF400FFB113 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -217,6 +218,7 @@
 		78EEFE5F27064D47008B2DA3 = {
 			isa = PBXGroup;
 			children = (
+				7800801F2C884BEE00796EC1 /* README.md */,
 				78EEFE6A27064D47008B2DA3 /* QRCoder */,
 				78FD9001272ACC070094DA3A /* QRCoderWidget */,
 				78FD9019272AF6740094DA3A /* QRCoderWidgetIntentHandler */,
