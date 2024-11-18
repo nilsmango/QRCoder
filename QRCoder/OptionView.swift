@@ -55,13 +55,16 @@ struct OptionView: View {
                 Link(destination: URL(string: "https://project7iii.com")!, label: { Label("More from project7III", systemImage: "globe.europe.africa.fill") })
                 
                 
-                
                 Link(destination: URL(string: "https://project7iii.com/qr/privacy-policy/")!) {
                     Label("Privacy Policy", systemImage: "lock.fill")
                 }
                 
                 Link(destination: URL(string: "https://project7iii.com/qr/terms-and-conditions/")!) {
                     Label("Terms and Conditions", systemImage: "doc.text.fill")
+                }
+                
+                Link(destination: URL(string: "https://apps.apple.com/app/id6670425489?action=write-review")!) {
+                    Label("Help Us Out & Review this App!", systemImage: "star.fill")
                 }
                 
                 if myData.hasPurchasedPremium {
