@@ -92,7 +92,7 @@ struct QRListView: View {
                         .padding(.bottom)
                         
                     } else {
-                        Text("Could not load available upgrades, please try again when connected to the internet or by restarting the app.\nThe free version of QRCoder is limited to one QR code at a time. Edit or remove your QR code below.\nIf this persists please email us at hi@project7iii.com")
+                        Text("Could not load available upgrades, please try again when connected to the internet or by restarting the app.\nThe free version of QRCoder is limited to one QR code at a time. Edit or remove your QR code below.\nIf this persists please email us at 7+qr@project7iii.com")
                             .foregroundColor(.primary.opacity(0.9))
                             .padding([.leading, .trailing], 40.0)
                             .padding(.top)

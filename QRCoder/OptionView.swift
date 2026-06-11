@@ -48,7 +48,7 @@ struct OptionView: View {
                 .padding(.top)
             ) {
                 
-                Link(destination: URL(string: "mailto:hi@project7iii.com")!) {
+                Link(destination: URL(string: "mailto:7+qr@project7iii.com")!) {
                     Label("Contact", systemImage: "envelope.fill")
                 }
                 
